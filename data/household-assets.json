@@ -1,0 +1,2395 @@
+{
+  "86": {
+    "name": "搪瓷茶缸",
+    "url": "./assets/household/mug.glb",
+    "source": "./assets-source/household/mug.glb",
+    "triangles": 5396,
+    "meshes": 6,
+    "bytes": 654744,
+    "bounds": {
+      "min": [
+        -0.3269999921321869,
+        -0.44737884402275085,
+        -0.42981627583503723
+      ],
+      "max": [
+        0.5220014452934265,
+        0.47082269191741943,
+        0.4653192162513733
+      ]
+    },
+    "sha256": "721d79b50bb9ac867c4ab4555bfd235f0a2a4b332fe74da3971a54318b6d8349",
+    "revision": "household-lime-7",
+    "levels": [
+      1,
+      2,
+      3,
+      5,
+      29,
+      31,
+      32,
+      719
+    ]
+  },
+  "293": {
+    "name": "牙刷",
+    "url": "./assets/household/toothbrush.glb",
+    "source": "./assets-source/household/toothbrush.glb",
+    "triangles": 2976,
+    "meshes": 3,
+    "bytes": 289276,
+    "bounds": {
+      "min": [
+        -0.11048678308725357,
+        -0.5059999823570251,
+        -0.04730230197310448
+      ],
+      "max": [
+        0.1252436637878418,
+        0.5199999809265137,
+        0.11749999970197678
+      ]
+    },
+    "sha256": "2a2e4f8c9884f869f43402552558d398755e1f433e275f257ac9ce3172f42ffc",
+    "revision": "household-lime-6"
+  },
+  "399": {
+    "name": "包子",
+    "url": "./assets/household/steamed-bun.glb",
+    "source": "./assets-source/household/steamed-bun.glb",
+    "triangles": 5376,
+    "meshes": 1,
+    "bytes": 262932,
+    "bounds": {
+      "min": [
+        -0.4726382791996002,
+        -0.41529515385627747,
+        -0.41405537724494934
+      ],
+      "max": [
+        0.4579744040966034,
+        0.3980955481529236,
+        0.40016576647758484
+      ]
+    },
+    "sha256": "22ee9f20b2521eebd0a55e2d26e0a90a0537692d11b2245e9813d5257d47e91c",
+    "revision": "household-lime-8",
+    "levels": [
+      1,
+      2,
+      3,
+      5,
+      29,
+      32,
+      719
+    ]
+  },
+  "898": {
+    "name": "拨盘座机",
+    "url": "./assets/household/rotary-phone.glb",
+    "source": "./assets-source/household/rotary-phone.glb",
+    "triangles": 4948,
+    "meshes": 7,
+    "bytes": 277812,
+    "bounds": {
+      "min": [
+        -0.46671077609062195,
+        -0.4023955464363098,
+        -0.2854616940021515
+      ],
+      "max": [
+        0.46671077609062195,
+        0.5231226682662964,
+        0.46518927812576294
+      ]
+    },
+    "sha256": "b8aa1d93f4256409c19181311f040c06954bc1a7cc7b9cb45f4fdaed55127ef9",
+    "revision": "household-classic-1"
+  },
+  "1048": {
+    "name": "橘子",
+    "url": "./assets/household/orange.glb",
+    "source": "./assets-source/household/orange.glb",
+    "triangles": 3008,
+    "meshes": 4,
+    "bytes": 356728,
+    "bounds": {
+      "min": [
+        -0.44429582357406616,
+        -0.4410000145435333,
+        -0.43815216422080994
+      ],
+      "max": [
+        0.4453391432762146,
+        0.4773244042682606,
+        0.4385014474391937
+      ]
+    },
+    "sha256": "c158415387b5481a5cae00ba71fd6247759646510093837885a3edd78427812d",
+    "revision": "household-food-1",
+    "levels": [1, 2, 3, 5, 32, 719]
+  },
+  "1126": {
+    "name": "热水瓶",
+    "url": "./assets/household/thermos.glb",
+    "source": "./assets-source/household/thermos.glb",
+    "triangles": 4816,
+    "meshes": 4,
+    "bytes": 551384,
+    "bounds": {
+      "min": [
+        -0.2529999911785126,
+        -0.4857662320137024,
+        -0.30916833877563477
+      ],
+      "max": [
+        0.44688349962234497,
+        0.5265870690345764,
+        0.2868896424770355
+      ]
+    },
+    "sha256": "77f1d57a6340fbdb4ea0f394b0c906e6c3569fd97429197bb8823643bd0042ff",
+    "revision": "household-lime-2",
+    "levels": [
+      1,
+      2,
+      3,
+      5,
+      29,
+      31,
+      32,
+      719
+    ]
+  },
+  "1148": {
+    "name": "家用剪刀",
+    "url": "./assets/household/scissors.glb",
+    "source": "./assets-source/household/scissors.glb",
+    "triangles": 2836,
+    "meshes": 5,
+    "bytes": 281700,
+    "bounds": {
+      "min": [
+        -0.28906044363975525,
+        -0.4448261260986328,
+        -0.054999999701976776
+      ],
+      "max": [
+        0.28906044363975525,
+        0.4943506121635437,
+        0.054999999701976776
+      ]
+    },
+    "sha256": "9cd45b85f69990908ae59cadf0873a10e584afaf12134388008cf2d7c283730d",
+    "revision": "household-craft-2"
+  },
+  "1380": {
+    "name": "竹骨折扇",
+    "url": "./assets/household/folding-fan.glb",
+    "source": "./assets-source/household/folding-fan.glb",
+    "triangles": 2560,
+    "meshes": 4,
+    "bytes": 286004,
+    "bounds": {
+      "min": [
+        -0.6090528964996338,
+        -0.34299999475479126,
+        -0.04500000178813934
+      ],
+      "max": [
+        0.6090528964996338,
+        0.37559378147125244,
+        0.04500000178813934
+      ]
+    },
+    "sha256": "77c0fc9d7420cd94ab69cb577d79ee198ecbd1f7c428ab5c173173adeaa8e75a",
+    "revision": "household-lime-5",
+    "levels": [
+      1,
+      2,
+      3,
+      5,
+      29,
+      32,
+      719
+    ]
+  },
+  "1441": {
+    "name": "火柴盒",
+    "url": "./assets/household/matchbox.glb",
+    "source": "./assets-source/household/matchbox.glb",
+    "triangles": 222,
+    "meshes": 5,
+    "bytes": 41632,
+    "bounds": {
+      "min": [
+        -0.291,
+        -0.4534999998509884,
+        -0.13500000536441803
+      ],
+      "max": [
+        0.291,
+        0.41999998688697815,
+        0.136
+      ]
+    },
+    "sha256": "34ebfaeef05e18cad5e7514337617bc495c911d86504562f1b30cb705dfa6b97",
+    "revision": "household-lime-3",
+    "levels": [
+      1,
+      2,
+      3,
+      5,
+      31,
+      719
+    ]
+  },
+  "1472": {
+    "name": "电饭煲",
+    "url": "./assets/household/rice-cooker.glb",
+    "source": "./assets-source/household/rice-cooker.glb",
+    "triangles": 4872,
+    "meshes": 6,
+    "bytes": 522208,
+    "bounds": {
+      "min": [
+        -0.4844433069229126,
+        -0.4154355227947235,
+        -0.4332946538925171
+      ],
+      "max": [
+        0.4844433069229126,
+        0.507938027381897,
+        0.4965125620365143
+      ]
+    },
+    "sha256": "a0099f896ac2e8fcdb7f09c717c6070b009f74d725ed98f884d11874f43a14f1",
+    "revision": "household-lime-9",
+    "levels": [
+      1,
+      2,
+      3,
+      5,
+      31,
+      719
+    ]
+  },
+  "1492": {
+    "name": "双铃闹钟",
+    "url": "./assets/household/mantel-clock.glb",
+    "source": "./assets-source/household/mantel-clock.glb",
+    "triangles": 5436,
+    "meshes": 5,
+    "bytes": 154360,
+    "bounds": {
+      "min": [
+        -0.3610000014305115,
+        -0.45187610387802124,
+        -0.1599999964237213
+      ],
+      "max": [
+        0.3610000014305115,
+        0.4654504656791687,
+        0.1860000044107437
+      ]
+    },
+    "sha256": "23daa6f13c0087b3710172be9add3e19b12aa95ab844d287740da2c136e5c7eb",
+    "revision": "household-lime-5"
+  },
+  "duck": {
+    "name": "小黄鸭",
+    "url": "./assets/household/duck.glb",
+    "source": "./assets-source/household/duck.glb",
+    "triangles": 2660,
+    "meshes": 6,
+    "bytes": 79372,
+    "bounds": {
+      "min": [
+        -0.58299320936203,
+        -0.44494807720184326,
+        -0.45331740379333496
+      ],
+      "max": [
+        0.5804678201675415,
+        0.5262689590454102,
+        0.4033210575580597
+      ]
+    },
+    "sha256": "0d27d26f986151cb15f2f34bd4d7a7ac0297305c59f9554be29503b9d921e5ca",
+    "revision": "starter-1",
+    "levels": [
+      1,
+      28
+    ]
+  },
+  "strawberry": {
+    "name": "草莓",
+    "url": "./assets/household/strawberry.glb",
+    "source": "./assets-source/household/strawberry.glb",
+    "triangles": 3744,
+    "meshes": 4,
+    "bytes": 210476,
+    "bounds": {
+      "min": [
+        -0.4456250071525574,
+        -0.4822791814804077,
+        -0.42849770188331604
+      ],
+      "max": [
+        0.4487125873565674,
+        0.4802412688732147,
+        0.472377747297287
+      ]
+    },
+    "sha256": "43fdcfbcb70f6a8a43d2f4a8f566bc81acb106f7bfcb47f609f4cc11e700d575",
+    "revision": "starter-1",
+    "levels": [
+      1,
+      18,
+      22
+    ]
+  },
+  "watergun": {
+    "name": "玩具水枪",
+    "url": "./assets/household/watergun.glb",
+    "source": "./assets-source/household/watergun.glb",
+    "triangles": 4368,
+    "meshes": 6,
+    "bytes": 136668,
+    "bounds": {
+      "min": [
+        -0.5648123621940613,
+        -0.4708925783634186,
+        -0.25698205828666687
+      ],
+      "max": [
+        0.5852072834968567,
+        0.4497644603252411,
+        0.25830280780792236
+      ]
+    },
+    "sha256": "adeed10acacd5b973af8d1f2d64b01132d50e94d09a69f52d2a9fb9cae21a771",
+    "revision": "starter-1",
+    "level": 1
+  },
+  "helicopter": {
+    "name": "玩具直升机",
+    "url": "./assets/household/helicopter.glb",
+    "source": "./assets-source/household/helicopter.glb",
+    "triangles": 2788,
+    "meshes": 5,
+    "bytes": 88804,
+    "bounds": {
+      "min": [
+        -0.7731484770774841,
+        -0.47095048427581787,
+        -0.3223245441913605
+      ],
+      "max": [
+        0.5594692230224609,
+        0.3522064983844757,
+        0.3479987382888794
+      ]
+    },
+    "sha256": "bd53c9a5b7eb270ad0dfc836f6e8a0aed569c31b7389176d9fffa3e05abf3249",
+    "revision": "starter-1",
+    "levels": [
+      2,
+      21
+    ]
+  },
+  "ice": {
+    "name": "冰块",
+    "url": "./assets/household/ice.glb",
+    "source": "./assets-source/household/ice.glb",
+    "triangles": 432,
+    "meshes": 3,
+    "bytes": 18492,
+    "bounds": {
+      "min": [
+        -0.493773877620697,
+        -0.5309980511665344,
+        -0.575764536857605
+      ],
+      "max": [
+        0.505134642124176,
+        0.5135207772254944,
+        0.5486734509468079
+      ]
+    },
+    "sha256": "d61d068b839f99f0af342b8d4aecc82f473c69eeb45c1fbc1806a78803257dbb",
+    "revision": "starter-1",
+    "levels": [
+      2,
+      22
+    ]
+  },
+  "blueball": {
+    "name": "花纹蓝球",
+    "url": "./assets/household/blueball.glb",
+    "source": "./assets-source/household/blueball.glb",
+    "triangles": 1896,
+    "meshes": 3,
+    "bytes": 54812,
+    "bounds": {
+      "min": [
+        -0.4610762894153595,
+        -0.46316248178482056,
+        -0.4735976457595825
+      ],
+      "max": [
+        0.4610762894153595,
+        0.47913119196891785,
+        0.4785236120223999
+      ]
+    },
+    "sha256": "638a3816566f71289060a717c6d183811987e1ef07da5d90903c9c05373d6955",
+    "revision": "starter-1",
+    "level": 2
+  },
+  "burger": {
+    "name": "汉堡",
+    "url": "./assets/household/burger.glb",
+    "source": "./assets-source/household/burger.glb",
+    "triangles": 3948,
+    "meshes": 6,
+    "bytes": 120172,
+    "bounds": {
+      "min": [
+        -0.5127651691436768,
+        -0.4597949981689453,
+        -0.5289261937141418
+      ],
+      "max": [
+        0.5127651691436768,
+        0.48470449447631836,
+        0.5062603950500488
+      ]
+    },
+    "sha256": "cea9442ba5958523b008fd6855914c861d092013f157deacaa20fc742bbdc576",
+    "revision": "starter-1",
+    "level": 3
+  },
+  "fries": {
+    "name": "薯条",
+    "url": "./assets/household/fries.glb",
+    "source": "./assets-source/household/fries.glb",
+    "triangles": 2040,
+    "meshes": 5,
+    "bytes": 83208,
+    "bounds": {
+      "min": [
+        -0.4128344655036926,
+        -0.466246098279953,
+        -0.34061434864997864
+      ],
+      "max": [
+        0.4031999111175537,
+        0.4634893238544464,
+        0.2885470688343048
+      ]
+    },
+    "sha256": "10af00def89dc0b5faa8535a6fffc08d31bb4facea5696b058820e82ac1f0dd4",
+    "revision": "starter-1",
+    "level": 3
+  },
+  "icecream": {
+    "name": "冰淇淋",
+    "url": "./assets/household/icecream.glb",
+    "source": "./assets-source/household/icecream.glb",
+    "triangles": 4672,
+    "meshes": 3,
+    "bytes": 121400,
+    "bounds": {
+      "min": [
+        -0.28643688559532166,
+        -0.504336416721344,
+        -0.26411116123199463
+      ],
+      "max": [
+        0.2991102933883667,
+        0.4430863559246063,
+        0.301586776971817
+      ]
+    },
+    "sha256": "311e498eba85cc29f01e10d16784ee3bd2726a3f47a1e8e9046790fbc1bb9313",
+    "revision": "starter-1",
+    "levels": [
+      3,
+      22
+    ]
+  },
+  "apple": {
+    "name": "红苹果",
+    "url": "./assets/glazed-objects/apple-hd.glb",
+    "source": "./assets-source/household/apple.glb",
+    "triangles": 9792,
+    "meshes": 3,
+    "bytes": 282368,
+    "bounds": {
+      "min": [
+        -0.44182178378105164,
+        -0.35887467861175537,
+        -0.42143699526786804
+      ],
+      "max": [
+        0.44136327505111694,
+        0.4926713923212355,
+        0.4346989393234253
+      ]
+    },
+    "sha256": "a75918fa0557428ca8eb779e6e58cb1391d61e8872a61a06ef09b42c6fe89d86",
+    "revision": "orchard-gloss-3",
+    "levels": [
+      4,
+      18
+    ]
+  },
+  "yellowapple": {
+    "name": "黄苹果",
+    "url": "./assets/household/yellowapple.glb",
+    "source": "./assets-source/household/yellowapple.glb",
+    "triangles": 1752,
+    "meshes": 3,
+    "bytes": 55836,
+    "bounds": {
+      "min": [
+        -0.4400857388973236,
+        -0.3574729859828949,
+        -0.42113742232322693
+      ],
+      "max": [
+        0.43904000520706177,
+        0.5263900518861447,
+        0.4338867962360382
+      ]
+    },
+    "sha256": "28ccb29d17e92b0e45f6082d2b869b7320721e0101f38cc21f05c7ee9550aecf",
+    "revision": "orchard-lime-2",
+    "level": 4
+  },
+  "pear": {
+    "name": "青梨",
+    "url": "./assets/household/pear.glb",
+    "source": "./assets-source/household/pear.glb",
+    "triangles": 1752,
+    "meshes": 3,
+    "bytes": 55820,
+    "bounds": {
+      "min": [
+        -0.378219872713089,
+        -0.41499999165534973,
+        -0.3640202581882477
+      ],
+      "max": [
+        0.378219872713089,
+        0.5913900518861447,
+        0.36970487236976624
+      ]
+    },
+    "sha256": "45c1db689651a8317c6a234b78cc61ec3a354ceee1610801cd1b5379b8af0781",
+    "revision": "orchard-lime-2",
+    "levels": [
+      4,
+      18
+    ]
+  },
+  "banana": {
+    "name": "香蕉",
+    "url": "./assets/household/banana.glb",
+    "source": "./assets-source/household/banana.glb",
+    "triangles": 756,
+    "meshes": 3,
+    "bytes": 27328,
+    "bounds": {
+      "min": [
+        -0.4461183249950409,
+        -0.373641699552536,
+        -0.10722007602453232
+      ],
+      "max": [
+        0.3838310032337905,
+        0.500879168510437,
+        0.1979599893093109
+      ]
+    },
+    "sha256": "11e3284c4f2bf2b3a598c87af0fdd4c69473dfb2ded32749286b726395d4c1a8",
+    "revision": "orchard-lime-1",
+    "level": 4
+  },
+  "cherry": {
+    "name": "樱桃",
+    "url": "./assets/household/cherry.glb",
+    "source": "./assets-source/household/cherry.glb",
+    "triangles": 1584,
+    "meshes": 2,
+    "bytes": 52200,
+    "bounds": {
+      "min": [
+        -0.49800002574920654,
+        -0.44144001603126526,
+        -0.27132999897003174
+      ],
+      "max": [
+        0.49800002574920654,
+        0.4397468566894531,
+        0.27132999897003174
+      ]
+    },
+    "sha256": "6953a0032ec149080ffc3beebc2f5f51c9da6c0fc1a671d92094728b51d1fe36",
+    "revision": "orchard-lime-1",
+    "levels": [
+      4,
+      18
+    ]
+  },
+  "lemon": {
+    "name": "柠檬",
+    "url": "./assets/household/lemon.glb",
+    "source": "./assets-source/household/lemon.glb",
+    "triangles": 1752,
+    "meshes": 3,
+    "bytes": 55804,
+    "bounds": {
+      "min": [
+        -0.3339596390724182,
+        -0.4309999942779541,
+        -0.3236027657985687
+      ],
+      "max": [
+        0.3339596390724182,
+        0.6213900518861447,
+        0.32594338059425354
+      ]
+    },
+    "sha256": "ac8ce9674cfa8f6a5894f57031aade1779f1f94e9f1074c9c4cffdd1fadc22cc",
+    "revision": "orchard-lime-1",
+    "levels": [
+      4,
+      18
+    ]
+  },
+  "soccer": {
+    "name": "足球",
+    "url": "./assets/household/soccer.glb",
+    "source": "./assets-source/household/soccer.glb",
+    "triangles": 4536,
+    "meshes": 3,
+    "bytes": 119456,
+    "bounds": {
+      "min": [
+        -0.4939723610877991,
+        -0.4939723610877991,
+        -0.4939723610877991
+      ],
+      "max": [
+        0.4939723610877991,
+        0.4939723610877991,
+        0.4939723610877991
+      ]
+    },
+    "sha256": "a423b197c7632199ad6d9e05cb9a3a01d9a55b1165bc8d9deb8772282e855a50",
+    "revision": "sports-lime-1",
+    "level": 6
+  },
+  "basketball": {
+    "name": "篮球",
+    "url": "./assets/household/basketball.glb",
+    "source": "./assets-source/household/basketball.glb",
+    "triangles": 2160,
+    "meshes": 1,
+    "bytes": 190120,
+    "bounds": {
+      "min": [
+        -0.4791073799133301,
+        -0.4798392653465271,
+        -0.47983500361442566
+      ],
+      "max": [
+        0.4791073799133301,
+        0.4798392653465271,
+        0.47983500361442566
+      ]
+    },
+    "sha256": "cee08473ff5cf54e8b2a6ee6c722eae39df7b2eb7c995a8ce9a08552e6eae8c0",
+    "revision": "sports-lime-1",
+    "level": 6
+  },
+  "volleyball": {
+    "name": "排球",
+    "url": "./assets/household/volleyball.glb",
+    "source": "./assets-source/household/volleyball.glb",
+    "triangles": 2160,
+    "meshes": 1,
+    "bytes": 66616,
+    "bounds": {
+      "min": [
+        -0.4791073799133301,
+        -0.47988152503967285,
+        -0.47948676347732544
+      ],
+      "max": [
+        0.4791073799133301,
+        0.47988152503967285,
+        0.47948676347732544
+      ]
+    },
+    "sha256": "978918f82f7cc9086c6534d7225474188f59e5849c2dbfe9e80475d811b5421d",
+    "revision": "sports-lime-1",
+    "level": 6
+  },
+  "rugby": {
+    "name": "橄榄球",
+    "url": "./assets/household/rugby.glb",
+    "source": "./assets-source/household/rugby.glb",
+    "triangles": 1552,
+    "meshes": 2,
+    "bytes": 160944,
+    "bounds": {
+      "min": [
+        -0.3175119161605835,
+        -0.4999751150608063,
+        -0.28999999165534973
+      ],
+      "max": [
+        0.3175119161605835,
+        0.4999751150608063,
+        0.29899999499320984
+      ]
+    },
+    "sha256": "94c3b84716f2ac3e724f33e3dbedba1af7fa30a928a2c30736042f17a1635b17",
+    "revision": "sports-lime-1",
+    "level": 6
+  },
+  "tennis": {
+    "name": "网球",
+    "url": "./assets/household/tennis.glb",
+    "source": "./assets-source/household/tennis.glb",
+    "triangles": 2160,
+    "meshes": 1,
+    "bytes": 236164,
+    "bounds": {
+      "min": [
+        -0.39925616979599,
+        -0.39990127086639404,
+        -0.3995722830295563
+      ],
+      "max": [
+        0.39925616979599,
+        0.39990127086639404,
+        0.3995722830295563
+      ]
+    },
+    "sha256": "57cdbb03701e83ae1177c7631c366903c44558298f7a360f2f64582b946109ae",
+    "revision": "sports-lime-1",
+    "levels": [
+      6,
+      19
+    ]
+  },
+  "pencil": {
+    "name": "铅笔",
+    "url": "./assets/household/pencil.glb",
+    "source": "./assets-source/household/pencil.glb",
+    "triangles": 168,
+    "meshes": 5,
+    "bytes": 13104,
+    "bounds": {
+      "min": [
+        -0.1319611668586731,
+        -0.5354853868484497,
+        -0.07808490097522736
+      ],
+      "max": [
+        0.11212673783302307,
+        0.5747942328453064,
+        0.06840673089027405
+      ]
+    },
+    "sha256": "570e53c7bce86c8c0691f8e48fc9fae51bc85f4dbb943fef8bab8ee25fe2c55c",
+    "revision": "school-lime-1",
+    "levels": [
+      7,
+      27
+    ]
+  },
+  "scissors": {
+    "name": "剪刀",
+    "url": "./assets/household/school-scissors.glb",
+    "source": "./assets-source/household/school-scissors.glb",
+    "triangles": 2836,
+    "meshes": 5,
+    "bytes": 281700,
+    "bounds": {
+      "min": [
+        -0.28906044363975525,
+        -0.4448261260986328,
+        -0.054999999701976776
+      ],
+      "max": [
+        0.28906044363975525,
+        0.4943506121635437,
+        0.054999999701976776
+      ]
+    },
+    "sha256": "9cd45b85f69990908ae59cadf0873a10e584afaf12134388008cf2d7c283730d",
+    "revision": "school-lime-1",
+    "levels": [
+      7,
+      27
+    ]
+  },
+  "chair": {
+    "name": "蓝椅子",
+    "url": "./assets/household/chair.glb",
+    "source": "./assets-source/household/chair.glb",
+    "triangles": 440,
+    "meshes": 2,
+    "bytes": 18176,
+    "bounds": {
+      "min": [
+        -0.4323153495788574,
+        -0.637969434261322,
+        -0.5353690385818481
+      ],
+      "max": [
+        0.41957399249076843,
+        0.5800504684448242,
+        0.3094276785850525
+      ]
+    },
+    "sha256": "6eda589c6024d171ea9f48af5f6af4e8a75c0760cb816a8ac1080ebe3e4b3b3a",
+    "revision": "school-lime-1",
+    "level": 7
+  },
+  "stool": {
+    "name": "圆凳",
+    "url": "./assets/household/stool.glb",
+    "source": "./assets-source/household/stool.glb",
+    "triangles": 376,
+    "meshes": 2,
+    "bytes": 18028,
+    "bounds": {
+      "min": [
+        -0.36852505803108215,
+        -0.5362616181373596,
+        -0.5103970766067505
+      ],
+      "max": [
+        0.43420472741127014,
+        0.3751865029335022,
+        0.3952590227127075
+      ]
+    },
+    "sha256": "cde283e7461c8a16d831754e613a63af97bb35ceac4cdc79e86f5cb5de2f39bc",
+    "revision": "school-lime-1",
+    "level": 7
+  },
+  "book": {
+    "name": "练习本",
+    "url": "./assets/household/book.glb",
+    "source": "./assets-source/household/book.glb",
+    "triangles": 434,
+    "meshes": 3,
+    "bytes": 30616,
+    "bounds": {
+      "min": [
+        -0.40186554193496704,
+        -0.4903895854949951,
+        -0.26898518204689026
+      ],
+      "max": [
+        0.40186554193496704,
+        0.4903895854949951,
+        0.2691437304019928
+      ]
+    },
+    "sha256": "4adb7286a877c766b6b13c3e95d1b4f17495f6ee4b514ed1e96aaa7ce0cf72d0",
+    "revision": "school-lime-1",
+    "levels": [
+      7,
+      27
+    ]
+  },
+  "brush": {
+    "name": "画笔",
+    "url": "./assets/household/brush.glb",
+    "source": "./assets-source/household/brush.glb",
+    "triangles": 496,
+    "meshes": 4,
+    "bytes": 23196,
+    "bounds": {
+      "min": [
+        -0.14083333313465118,
+        -0.5059711337089539,
+        -0.11938519030809402
+      ],
+      "max": [
+        0.1385473757982254,
+        0.5192052721977234,
+        0.1304682344198227
+      ]
+    },
+    "sha256": "59346761bd35593cb01ff2bb9a5f4bfbc54157501e87fa02ed945506fc2b3a02",
+    "revision": "school-lime-1",
+    "levels": [
+      7,
+      27
+    ]
+  },
+  "sandwich": {
+    "name": "三明治",
+    "url": "./assets/household/sandwich.glb",
+    "source": "./assets-source/household/sandwich.glb",
+    "triangles": 2888,
+    "meshes": 6,
+    "bytes": 196788,
+    "bounds": {
+      "min": [
+        -0.529161274433136,
+        -0.4811893701553345,
+        -0.4752151072025299
+      ],
+      "max": [
+        0.4774165451526642,
+        0.5904141068458557,
+        0.40411388874053955
+      ]
+    },
+    "sha256": "f9be598892372a1a44b915d991fe66ccce1a4bdc112c0246e747511b3db094da",
+    "revision": "breakfast-lime-2",
+    "level": 8
+  },
+  "friedegg": {
+    "name": "煎蛋",
+    "url": "./assets/household/friedegg.glb",
+    "source": "./assets-source/household/friedegg.glb",
+    "triangles": 1456,
+    "meshes": 3,
+    "bytes": 40440,
+    "bounds": {
+      "min": [
+        -0.4382466673851013,
+        -0.4312554597854614,
+        -0.14397862553596497
+      ],
+      "max": [
+        0.4965536296367645,
+        0.42286282777786255,
+        0.18299712240695953
+      ]
+    },
+    "sha256": "bcab89c0e40f1ebc03c82c3f00b793051459ef4aca3e7676dbc3fe6e9c2f3519",
+    "revision": "breakfast-lime-1",
+    "level": 8
+  },
+  "toast": {
+    "name": "吐司",
+    "url": "./assets/household/toast.glb",
+    "source": "./assets-source/household/toast.glb",
+    "triangles": 1936,
+    "meshes": 3,
+    "bytes": 106892,
+    "bounds": {
+      "min": [
+        -0.49291563034057617,
+        -0.4122662842273712,
+        -0.3279445767402649
+      ],
+      "max": [
+        0.4767422080039978,
+        0.43545523285865784,
+        0.3269348740577698
+      ]
+    },
+    "sha256": "d268f286bad7be6ca36adc0d2c59492fa7788f81ad2805414801b6158294e10c",
+    "revision": "breakfast-lime-2",
+    "level": 8
+  },
+  "avocado": {
+    "name": "牛油果",
+    "url": "./assets/household/avocado.glb",
+    "source": "./assets-source/household/avocado.glb",
+    "triangles": 2280,
+    "meshes": 4,
+    "bytes": 127256,
+    "bounds": {
+      "min": [
+        -0.3983461856842041,
+        -0.5332043170928955,
+        -0.3999713361263275
+      ],
+      "max": [
+        0.3802902102470398,
+        0.5180803537368774,
+        0.2353907972574234
+      ]
+    },
+    "sha256": "c8a090fa30fa363828d546d6f1ac81ca031651287d75ad52625ac5d73a4e1051",
+    "revision": "breakfast-lime-1",
+    "level": 8
+  },
+  "tomato": {
+    "name": "番茄",
+    "url": "./assets/household/tomato.glb",
+    "source": "./assets-source/household/tomato.glb",
+    "triangles": 2408,
+    "meshes": 2,
+    "bytes": 63544,
+    "bounds": {
+      "min": [
+        -0.4191891849040985,
+        -0.42390140891075134,
+        -0.4452344477176666
+      ],
+      "max": [
+        0.4317750334739685,
+        0.4130927622318268,
+        0.4403088390827179
+      ]
+    },
+    "sha256": "18d237e1b62e69524053554fa34e2c476fd6e1c5326f9fa4a3343b6e19a7fad1",
+    "revision": "breakfast-lime-1",
+    "levels": [
+      8,
+      14,
+      18
+    ]
+  },
+  "orange": {
+    "name": "橙子",
+    "url": "./assets/household/orange.glb",
+    "source": "./assets-source/household/orange.glb",
+    "triangles": 3008,
+    "meshes": 4,
+    "bytes": 356728,
+    "bounds": {
+      "min": [
+        -0.44429582357406616,
+        -0.4410000145435333,
+        -0.43815216422080994
+      ],
+      "max": [
+        0.4453391432762146,
+        0.4773244042682606,
+        0.4385014474391937
+      ]
+    },
+    "sha256": "c158415387b5481a5cae00ba71fd6247759646510093837885a3edd78427812d",
+    "revision": "household-food-1",
+    "levels": [
+      8,
+      18
+    ]
+  },
+  "egg": {
+    "name": "鸡蛋",
+    "url": "./assets/household/egg.glb",
+    "source": "./assets-source/household/egg.glb",
+    "triangles": 1288,
+    "meshes": 1,
+    "bytes": 31588,
+    "bounds": {
+      "min": [
+        -0.31550806760787964,
+        -0.47129005193710327,
+        -0.35536065697669983
+      ],
+      "max": [
+        0.3472183048725128,
+        0.4443674385547638,
+        0.3155618906021118
+      ]
+    },
+    "sha256": "b2055522a6c9421ec0a5c16466992b127bdc09f0ffe8bacd5cc54b26c666f793",
+    "revision": "breakfast-lime-1",
+    "level": 8
+  },
+  "pepper": {
+    "name": "青椒",
+    "url": "./assets/household/pepper.glb",
+    "source": "./assets-source/household/pepper.glb",
+    "triangles": 1568,
+    "meshes": 2,
+    "bytes": 40096,
+    "bounds": {
+      "min": [
+        -0.3768310546875,
+        -0.470710426568985,
+        -0.3993333876132965
+      ],
+      "max": [
+        0.36347314715385437,
+        0.49239662289619446,
+        0.4709487557411194
+      ]
+    },
+    "sha256": "22d9d7ef2d1e28cc41f812c609ecda2dc2635de12bebdbed5ce3774653dd6cc2",
+    "revision": "breakfast-lime-1",
+    "levels": [
+      8,
+      14
+    ]
+  },
+  "cupcake": {
+    "name": "纸杯蛋糕",
+    "url": "./assets/household/cupcake.glb",
+    "source": "./assets-source/household/cupcake.glb",
+    "triangles": 1568,
+    "meshes": 4,
+    "bytes": 44616,
+    "bounds": {
+      "min": [
+        -0.3674834966659546,
+        -0.48516613245010376,
+        -0.3983798921108246
+      ],
+      "max": [
+        0.3614497184753418,
+        0.4559081196784973,
+        0.3516292870044708
+      ]
+    },
+    "sha256": "85f5dd7e476ea3438b165cf0ab0874b4700ba14f998bbc060966a8fe2fe46f3a",
+    "revision": "desserts-lime-1",
+    "level": 9
+  },
+  "macaron": {
+    "name": "马卡龙",
+    "url": "./assets/household/macaron.glb",
+    "source": "./assets-source/household/macaron.glb",
+    "triangles": 2072,
+    "meshes": 3,
+    "bytes": 55540,
+    "bounds": {
+      "min": [
+        -0.4778748154640198,
+        -0.39675912261009216,
+        -0.48582443594932556
+      ],
+      "max": [
+        0.4778748154640198,
+        0.39675912261009216,
+        0.48582443594932556
+      ]
+    },
+    "sha256": "cd098f02e841dc72692414fa31560dac4738022bfca6f4db5d03c01e4a01f1dc",
+    "revision": "desserts-lime-1",
+    "level": 9
+  },
+  "coffee": {
+    "name": "外带咖啡",
+    "url": "./assets/household/coffee.glb",
+    "source": "./assets-source/household/coffee.glb",
+    "triangles": 1956,
+    "meshes": 4,
+    "bytes": 56596,
+    "bounds": {
+      "min": [
+        -0.42751142382621765,
+        -0.5033993721008301,
+        -0.39817291498184204
+      ],
+      "max": [
+        0.32935699820518494,
+        0.5349780917167664,
+        0.484961599111557
+      ]
+    },
+    "sha256": "22767427b9fbf379d8b08269842fd662e7cde6cb6efd1f639c4f89af4cfa547b",
+    "revision": "desserts-lime-1",
+    "levels": [
+      9,
+      25
+    ]
+  },
+  "waffle": {
+    "name": "华夫饼",
+    "url": "./assets/household/waffle.glb",
+    "source": "./assets-source/household/waffle.glb",
+    "triangles": 2700,
+    "meshes": 2,
+    "bytes": 90112,
+    "bounds": {
+      "min": [
+        -0.4446333348751068,
+        -0.4152013063430786,
+        -0.3351685404777527
+      ],
+      "max": [
+        0.4446333348751068,
+        0.4152013063430786,
+        0.3351685404777527
+      ]
+    },
+    "sha256": "cc1392d372ec5de2c106697388b26a967f6e8e5e189ccb2d5e81f63a2d5b4cf4",
+    "revision": "desserts-lime-1",
+    "level": 9
+  },
+  "cake": {
+    "name": "切块蛋糕",
+    "url": "./assets/household/cake.glb",
+    "source": "./assets-source/household/cake.glb",
+    "triangles": 1440,
+    "meshes": 4,
+    "bytes": 82828,
+    "bounds": {
+      "min": [
+        -0.4977290630340576,
+        -0.3800846040248871,
+        -0.4445097744464874
+      ],
+      "max": [
+        0.4893529415130615,
+        0.5221965909004211,
+        0.28991398215293884
+      ]
+    },
+    "sha256": "b4a2c0ce67d1c2b635517f6e9f66a51b8b8ed93deffa5f0d1b8617aa99ecd2ce",
+    "revision": "desserts-lime-1",
+    "level": 9
+  },
+  "donut": {
+    "name": "甜甜圈",
+    "url": "./assets/household/donut.glb",
+    "source": "./assets-source/household/donut.glb",
+    "triangles": 3848,
+    "meshes": 5,
+    "bytes": 99140,
+    "bounds": {
+      "min": [
+        -0.4400970935821533,
+        -0.4400161802768707,
+        -0.20373736321926117
+      ],
+      "max": [
+        0.4348894953727722,
+        0.44055435061454773,
+        0.20853795111179352
+      ]
+    },
+    "sha256": "235f54c36ca0e5d8c997115968997041fca30deb47312979ef20e764035c37b2",
+    "revision": "desserts-lime-2",
+    "level": 9
+  },
+  "croissant": {
+    "name": "可颂",
+    "url": "./assets/household/croissant.glb",
+    "source": "./assets-source/household/croissant.glb",
+    "triangles": 2016,
+    "meshes": 2,
+    "bytes": 57588,
+    "bounds": {
+      "min": [
+        -0.4841994345188141,
+        -0.29975005984306335,
+        -0.19336777925491333
+      ],
+      "max": [
+        0.44865289330482483,
+        0.3102141320705414,
+        0.23521624505519867
+      ]
+    },
+    "sha256": "6a0f806a85a408aa31ab96e7638b2cfe5f6593d0113d7e5f607ee2371027bb72",
+    "revision": "desserts-lime-1",
+    "level": 9
+  },
+  "bowlingblue": {
+    "name": "蓝保龄球",
+    "url": "./assets/household/bowlingblue.glb",
+    "source": "./assets-source/household/bowlingblue.glb",
+    "triangles": 3500,
+    "meshes": 1,
+    "bytes": 105796,
+    "bounds": {
+      "min": [
+        -0.4789184629917145,
+        -0.4787229895591736,
+        -0.47809654474258423
+      ],
+      "max": [
+        0.4789184629917145,
+        0.4787229895591736,
+        0.47809654474258423
+      ]
+    },
+    "sha256": "f035f93c7631ebec42d15f951e7c6712ceeac2fb7b121da0313cfb21808c4633",
+    "revision": "bowling-lime-1",
+    "level": 10
+  },
+  "bowlinggreen": {
+    "name": "绿保龄球",
+    "url": "./assets/household/bowlinggreen.glb",
+    "source": "./assets-source/household/bowlinggreen.glb",
+    "triangles": 3500,
+    "meshes": 1,
+    "bytes": 105796,
+    "bounds": {
+      "min": [
+        -0.4789184629917145,
+        -0.4787229895591736,
+        -0.47809654474258423
+      ],
+      "max": [
+        0.4789184629917145,
+        0.4787229895591736,
+        0.47809654474258423
+      ]
+    },
+    "sha256": "de1faf91e6a99faece785e12b1203c6f71a64934b41c72fc5035f48226b9f789",
+    "revision": "bowling-lime-1",
+    "level": 10
+  },
+  "bowlingpink": {
+    "name": "粉保龄球",
+    "url": "./assets/household/bowlingpink.glb",
+    "source": "./assets-source/household/bowlingpink.glb",
+    "triangles": 3500,
+    "meshes": 1,
+    "bytes": 105796,
+    "bounds": {
+      "min": [
+        -0.4789184629917145,
+        -0.4787229895591736,
+        -0.47809654474258423
+      ],
+      "max": [
+        0.4789184629917145,
+        0.4787229895591736,
+        0.47809654474258423
+      ]
+    },
+    "sha256": "a02daa18df204c4872b99af01e2cb4ab6ccab5dba22f952c014d01ca6a41260f",
+    "revision": "bowling-lime-1",
+    "level": 10
+  },
+  "pinblue": {
+    "name": "蓝纹球瓶",
+    "url": "./assets/household/pinblue.glb",
+    "source": "./assets-source/household/pinblue.glb",
+    "triangles": 3008,
+    "meshes": 2,
+    "bytes": 73712,
+    "bounds": {
+      "min": [
+        -0.22841742634773254,
+        -0.494617223739624,
+        -0.32517892122268677
+      ],
+      "max": [
+        0.3107505738735199,
+        0.467807412147522,
+        0.24579572677612305
+      ]
+    },
+    "sha256": "be33e069e7ba3daf1322ab5b11f9e8678505a12179537fcb37f35d83fb908c43",
+    "revision": "bowling-lime-1",
+    "level": 10
+  },
+  "pingreen": {
+    "name": "绿纹球瓶",
+    "url": "./assets/household/pingreen.glb",
+    "source": "./assets-source/household/pingreen.glb",
+    "triangles": 2624,
+    "meshes": 2,
+    "bytes": 64016,
+    "bounds": {
+      "min": [
+        -0.22841742634773254,
+        -0.494617223739624,
+        -0.32517892122268677
+      ],
+      "max": [
+        0.3107505738735199,
+        0.467807412147522,
+        0.24579572677612305
+      ]
+    },
+    "sha256": "b41d3fb861e30ab504073c517e2c056da6ff0041c8d4dcad8ecc48c422fcdeae",
+    "revision": "bowling-lime-1",
+    "level": 10
+  },
+  "pinpink": {
+    "name": "粉纹球瓶",
+    "url": "./assets/household/pinpink.glb",
+    "source": "./assets-source/household/pinpink.glb",
+    "triangles": 3392,
+    "meshes": 2,
+    "bytes": 83404,
+    "bounds": {
+      "min": [
+        -0.22841742634773254,
+        -0.494617223739624,
+        -0.32517892122268677
+      ],
+      "max": [
+        0.3107505738735199,
+        0.467807412147522,
+        0.24579572677612305
+      ]
+    },
+    "sha256": "ce05da4dac188aecd83e3eee62a90b8a5e473da423b5940289b481984e609f66",
+    "revision": "bowling-lime-1",
+    "level": 10
+  },
+  "giftyellow": {
+    "name": "黄礼盒",
+    "url": "./assets/household/giftyellow.glb",
+    "source": "./assets-source/household/giftyellow.glb",
+    "triangles": 4132,
+    "meshes": 4,
+    "bytes": 195736,
+    "bounds": {
+      "min": [
+        -0.5212441682815552,
+        -0.5259647369384766,
+        -0.5444650650024414
+      ],
+      "max": [
+        0.49430373311042786,
+        0.5309672355651855,
+        0.5461199283599854
+      ]
+    },
+    "sha256": "a4a3cdf427982c1b301c7b0dc792c0414003fec597859509e2a4aacb32c2fd19",
+    "revision": "gifts-lime-1",
+    "level": 11
+  },
+  "giftgreen": {
+    "name": "绿礼盒",
+    "url": "./assets/household/giftgreen.glb",
+    "source": "./assets-source/household/giftgreen.glb",
+    "triangles": 3508,
+    "meshes": 4,
+    "bytes": 172020,
+    "bounds": {
+      "min": [
+        -0.5212441682815552,
+        -0.5259647369384766,
+        -0.5444650650024414
+      ],
+      "max": [
+        0.49430373311042786,
+        0.5309672355651855,
+        0.5461199283599854
+      ]
+    },
+    "sha256": "a00b9c7bc59aea205898365366e5202b5f0d8309deaaf620eaebb84d94da22e4",
+    "revision": "gifts-lime-1",
+    "levels": [
+      11,
+      23
+    ]
+  },
+  "giftpurple": {
+    "name": "紫礼盒",
+    "url": "./assets/household/giftpurple.glb",
+    "source": "./assets-source/household/giftpurple.glb",
+    "triangles": 3652,
+    "meshes": 4,
+    "bytes": 177512,
+    "bounds": {
+      "min": [
+        -0.5212441682815552,
+        -0.5259647369384766,
+        -0.5444650650024414
+      ],
+      "max": [
+        0.49430373311042786,
+        0.5309672355651855,
+        0.5461199283599854
+      ]
+    },
+    "sha256": "f8165d4a763946028ca10bcad30e4edee7bc1a13161ced1e1ca0bf8305eaa9b1",
+    "revision": "gifts-lime-1",
+    "levels": [
+      11,
+      23
+    ]
+  },
+  "giftblue": {
+    "name": "蓝礼盒",
+    "url": "./assets/household/giftblue.glb",
+    "source": "./assets-source/household/giftblue.glb",
+    "triangles": 3508,
+    "meshes": 4,
+    "bytes": 172032,
+    "bounds": {
+      "min": [
+        -0.5212441682815552,
+        -0.5259647369384766,
+        -0.5444650650024414
+      ],
+      "max": [
+        0.49430373311042786,
+        0.5309672355651855,
+        0.5461199283599854
+      ]
+    },
+    "sha256": "038d09e6521621cce52082194416cbfa8b140a38a47ec282a32320039120ab29",
+    "revision": "gifts-lime-1",
+    "levels": [
+      11,
+      28
+    ]
+  },
+  "gamepad": {
+    "name": "游戏手柄",
+    "url": "./assets/household/gamepad.glb",
+    "source": "./assets-source/household/gamepad.glb",
+    "triangles": 1708,
+    "meshes": 4,
+    "bytes": 62536,
+    "bounds": {
+      "min": [
+        -0.47897496819496155,
+        -0.3341442942619324,
+        -0.2607133984565735
+      ],
+      "max": [
+        0.5032689571380615,
+        0.29215604066848755,
+        0.255834698677063
+      ]
+    },
+    "sha256": "f3ceb54fec7ffb776c1c9958e002e5d242f4d6d99b0a2b37e55c325251fd49ef",
+    "revision": "toys-lime-1",
+    "levels": [
+      12,
+      24
+    ]
+  },
+  "handheld": {
+    "name": "掌上游戏机",
+    "url": "./assets/household/handheld.glb",
+    "source": "./assets-source/household/handheld.glb",
+    "triangles": 2328,
+    "meshes": 6,
+    "bytes": 77772,
+    "bounds": {
+      "min": [
+        -0.3820762634277344,
+        -0.4859596788883209,
+        -0.23647929728031158
+      ],
+      "max": [
+        0.3820762634277344,
+        0.4859596788883209,
+        0.24950262904167175
+      ]
+    },
+    "sha256": "a37209fca6ac8b91e83168d6d0f35e73bc37929a6e67c1c1c2bfea2bb804cda9",
+    "revision": "toys-lime-1",
+    "levels": [
+      12,
+      24
+    ]
+  },
+  "toytruck": {
+    "name": "玩具卡车",
+    "url": "./assets/household/toytruck.glb",
+    "source": "./assets-source/household/toytruck.glb",
+    "triangles": 1744,
+    "meshes": 6,
+    "bytes": 67488,
+    "bounds": {
+      "min": [
+        -0.48075905442237854,
+        -0.37262842059135437,
+        -0.4130532443523407
+      ],
+      "max": [
+        0.4902024567127228,
+        0.28974398970603943,
+        0.3308860659599304
+      ]
+    },
+    "sha256": "44f41b7287e8083cb2173966c196f7f24401862e59bef61532d9563e104060d8",
+    "revision": "toys-lime-2",
+    "levels": [
+      12,
+      21
+    ]
+  },
+  "toyrobot": {
+    "name": "红色机器人",
+    "url": "./assets/household/toyrobot.glb",
+    "source": "./assets-source/household/toyrobot.glb",
+    "triangles": 2696,
+    "meshes": 4,
+    "bytes": 89220,
+    "bounds": {
+      "min": [
+        -0.35297852754592896,
+        -0.4978465139865875,
+        -0.2391345053911209
+      ],
+      "max": [
+        0.3613266050815582,
+        0.5038259625434875,
+        0.2693710923194885
+      ]
+    },
+    "sha256": "89550b6c66bf9690fe9cd5a7790266e59aa322f011f9096c768dd1116ccf617e",
+    "revision": "toys-lime-1",
+    "levels": [
+      12,
+      21,
+      24,
+      28
+    ]
+  },
+  "soldier": {
+    "name": "玩具士兵",
+    "url": "./assets/household/soldier.glb",
+    "source": "./assets-source/household/soldier.glb",
+    "triangles": 2640,
+    "meshes": 5,
+    "bytes": 86300,
+    "bounds": {
+      "min": [
+        -0.25547027587890625,
+        -0.49635830521583557,
+        -0.3071337342262268
+      ],
+      "max": [
+        0.31239330768585205,
+        0.4077029526233673,
+        0.22387608885765076
+      ]
+    },
+    "sha256": "7796b601792b8fdd8ef4ba6a6f7432dea1ab71ac320c07cfb27f96a82f2a09b5",
+    "revision": "toys-lime-1",
+    "level": 12
+  },
+  "rubik": {
+    "name": "魔方",
+    "url": "./assets/household/rubik.glb",
+    "source": "./assets-source/household/rubik.glb",
+    "triangles": 6116,
+    "meshes": 7,
+    "bytes": 221508,
+    "bounds": {
+      "min": [
+        -0.5727732335356764,
+        -0.5485413543539194,
+        -0.6283183260737544
+      ],
+      "max": [
+        0.5727732335356764,
+        0.5485413543539194,
+        0.6283183260737544
+      ]
+    },
+    "sha256": "3f21e32f48c9cb46ee908fb07da0306e25ed1fa879e45399403fec75d2a3e4d2",
+    "revision": "toys-lime-1",
+    "levels": [
+      12,
+      23
+    ]
+  },
+  "toytelevision": {
+    "name": "蓝色电视",
+    "url": "./assets/household/toytelevision.glb",
+    "source": "./assets-source/household/toytelevision.glb",
+    "triangles": 2288,
+    "meshes": 6,
+    "bytes": 78096,
+    "bounds": {
+      "min": [
+        -0.41139280796051025,
+        -0.40869957208633423,
+        -0.2792939245700836
+      ],
+      "max": [
+        0.4045513868331909,
+        0.4977785646915436,
+        0.2588616609573364
+      ]
+    },
+    "sha256": "1b9383d12f6bfab9f19698f3ff907aede8e12ff2cb2ccff715157c1a6489aebe",
+    "revision": "toys-lime-2",
+    "levels": [
+      12,
+      24
+    ]
+  },
+  "camera": {
+    "name": "相机",
+    "url": "./assets/household/camera.glb",
+    "source": "./assets-source/household/camera.glb",
+    "triangles": 4080,
+    "meshes": 6,
+    "bytes": 195800,
+    "bounds": {
+      "min": [
+        -0.5256538687754038,
+        -0.3815213906544974,
+        -0.36090368749481383
+      ],
+      "max": [
+        0.5275871088909546,
+        0.43100782595401593,
+        0.4911351148304923
+      ]
+    },
+    "sha256": "9494170070681716b499ac1d1e2629e240f6fae1a238c2adbf5dcdc7b705c415",
+    "revision": "toys-lime-1",
+    "levels": [
+      12,
+      21,
+      24
+    ]
+  },
+  "drum": {
+    "name": "小鼓",
+    "url": "./assets/household/drum.glb",
+    "source": "./assets-source/household/drum.glb",
+    "triangles": 2960,
+    "meshes": 4,
+    "bytes": 91004,
+    "bounds": {
+      "min": [
+        -0.432009220123291,
+        -0.4595746695995331,
+        -0.47342973947525024
+      ],
+      "max": [
+        0.41871634125709534,
+        0.4428871273994446,
+        0.4592595100402832
+      ]
+    },
+    "sha256": "1811f93621770228221dcdb278e2c395ccf6d0972c692accb1b255a8f2c705a1",
+    "revision": "music-lime-3",
+    "level": 13
+  },
+  "clarinet": {
+    "name": "蓝色单簧管",
+    "url": "./assets/household/clarinet.glb",
+    "source": "./assets-source/household/clarinet.glb",
+    "triangles": 2312,
+    "meshes": 4,
+    "bytes": 70976,
+    "bounds": {
+      "min": [
+        -0.40481314063072205,
+        -0.4972715973854065,
+        -0.15209554135799408
+      ],
+      "max": [
+        0.28719329833984375,
+        0.4355575740337372,
+        0.28004899621009827
+      ]
+    },
+    "sha256": "cb0353a61349c5373f269c46bed95e102407da682fe6ff1155e4cc17c75b10cd",
+    "revision": "music-lime-2",
+    "level": 13
+  },
+  "maraca": {
+    "name": "沙锤",
+    "url": "./assets/household/maraca.glb",
+    "source": "./assets-source/household/maraca.glb",
+    "triangles": 2296,
+    "meshes": 4,
+    "bytes": 66476,
+    "bounds": {
+      "min": [
+        -0.36111027002334595,
+        -0.46972423791885376,
+        -0.2646578252315521
+      ],
+      "max": [
+        0.2574220299720764,
+        0.43811047077178955,
+        0.317817360162735
+      ]
+    },
+    "sha256": "2e348c633dccd8eca397411c11d59d359ecceb4f911df89a307b6f94a0bd3b6d",
+    "revision": "music-lime-2",
+    "level": 13
+  },
+  "harp": {
+    "name": "竖琴",
+    "url": "./assets/household/harp.glb",
+    "source": "./assets-source/household/harp.glb",
+    "triangles": 2222,
+    "meshes": 3,
+    "bytes": 68064,
+    "bounds": {
+      "min": [
+        -0.41345280408859253,
+        -0.45842647552490234,
+        -0.21053273975849152
+      ],
+      "max": [
+        0.38064858317375183,
+        0.5086439251899719,
+        0.1347942352294922
+      ]
+    },
+    "sha256": "9c8dc0345fe0506b5c6fa3a77635b8a1bae7e2210e8dbe27d1ae2c05ba6400d9",
+    "revision": "music-lime-3",
+    "level": 13
+  },
+  "trumpet": {
+    "name": "小号",
+    "url": "./assets/household/trumpet.glb",
+    "source": "./assets-source/household/trumpet.glb",
+    "triangles": 1598,
+    "meshes": 3,
+    "bytes": 48300,
+    "bounds": {
+      "min": [
+        -0.4075518250465393,
+        -0.19246706366539001,
+        -0.1179930716753006
+      ],
+      "max": [
+        0.5145543813705444,
+        0.4333345293998718,
+        0.31920120120048523
+      ]
+    },
+    "sha256": "bc10f614b7f34690a69a1107673e3cd006750342199a880610f053d3048d0548",
+    "revision": "music-lime-2",
+    "level": 13
+  },
+  "treble": {
+    "name": "高音谱号",
+    "url": "./assets/household/treble.glb",
+    "source": "./assets-source/household/treble.glb",
+    "triangles": 574,
+    "meshes": 1,
+    "bytes": 17008,
+    "bounds": {
+      "min": [
+        -0.256143718957901,
+        -0.4585035443305969,
+        -0.10401356220245361
+      ],
+      "max": [
+        0.3285350203514099,
+        0.44206541776657104,
+        0.1312481313943863
+      ]
+    },
+    "sha256": "aa37b9bd7465e0db5213d50ec9a1c4686db3ec638ddeb42c349cddd943e76816",
+    "revision": "music-lime-3",
+    "level": 13
+  },
+  "corncan": {
+    "name": "玉米罐头",
+    "url": "./assets/household/corncan.glb",
+    "source": "./assets-source/household/corncan.glb",
+    "triangles": 1600,
+    "meshes": 3,
+    "bytes": 55008,
+    "bounds": {
+      "min": [
+        -0.44479820132255554,
+        -0.553928554058075,
+        -0.5421780943870544
+      ],
+      "max": [
+        0.44449934363365173,
+        0.5522530674934387,
+        0.5425001382827759
+      ]
+    },
+    "sha256": "0a33f0fdcf3abf592ef6fa2fbf8037cb98a4ebc5814cae404a728dc6749aab9b",
+    "revision": "pantry-lime-2",
+    "level": 14
+  },
+  "tomatocan": {
+    "name": "番茄罐头",
+    "url": "./assets/household/tomatocan.glb",
+    "source": "./assets-source/household/tomatocan.glb",
+    "triangles": 1600,
+    "meshes": 3,
+    "bytes": 56468,
+    "bounds": {
+      "min": [
+        -0.44479820132255554,
+        -0.553928554058075,
+        -0.5421780943870544
+      ],
+      "max": [
+        0.44449934363365173,
+        0.5522530674934387,
+        0.5425001382827759
+      ]
+    },
+    "sha256": "de1f90deb65be351651d765aafebc40fe10f35276c95971910167b9ccc1c46ec",
+    "revision": "pantry-lime-2",
+    "level": 14
+  },
+  "limecan": {
+    "name": "青柠罐头",
+    "url": "./assets/household/limecan.glb",
+    "source": "./assets-source/household/limecan.glb",
+    "triangles": 1600,
+    "meshes": 3,
+    "bytes": 58184,
+    "bounds": {
+      "min": [
+        -0.44479820132255554,
+        -0.553928554058075,
+        -0.5421780943870544
+      ],
+      "max": [
+        0.44449934363365173,
+        0.5522530674934387,
+        0.5425001382827759
+      ]
+    },
+    "sha256": "60235714f1388c046d7506b420ae99dbae0b22d4932d501bd85c6ab686ed033d",
+    "revision": "pantry-lime-2",
+    "level": 14
+  },
+  "corn": {
+    "name": "玉米",
+    "url": "./assets/household/corn.glb",
+    "source": "./assets-source/household/corn.glb",
+    "triangles": 5184,
+    "meshes": 5,
+    "bytes": 169684,
+    "bounds": {
+      "min": [
+        -0.3259716033935547,
+        -0.552233099937439,
+        -0.1991254985332489
+      ],
+      "max": [
+        0.4113698899745941,
+        0.41971147060394287,
+        0.20405973494052887
+      ]
+    },
+    "sha256": "a29d0a2bd4ce35bb03e3177757ef15fad93af7d3d99b714ef48f638e687471bf",
+    "revision": "pantry-lime-2",
+    "level": 14
+  },
+  "taco": {
+    "name": "玉米卷饼",
+    "url": "./assets/household/taco.glb",
+    "source": "./assets-source/household/taco.glb",
+    "triangles": 2756,
+    "meshes": 4,
+    "bytes": 92332,
+    "bounds": {
+      "min": [
+        -0.5054611563682556,
+        -0.35232600569725037,
+        -0.2859649360179901
+      ],
+      "max": [
+        0.4648214280605316,
+        0.2308047115802765,
+        0.2677628695964813
+      ]
+    },
+    "sha256": "89c42061b7fc4993562c0753cc0fe44f80b0d8d2b63c806cfb631fa885d6c85d",
+    "revision": "pantry-lime-2",
+    "level": 14
+  },
+  "watermelon": {
+    "name": "西瓜片",
+    "url": "./assets/household/watermelon.glb",
+    "source": "./assets-source/household/watermelon.glb",
+    "triangles": 1392,
+    "meshes": 4,
+    "bytes": 61620,
+    "bounds": {
+      "min": [
+        -0.41178497672080994,
+        -0.32948654890060425,
+        -0.2707690894603729
+      ],
+      "max": [
+        0.5475660562515259,
+        0.4303682744503021,
+        0.2182987630367279
+      ]
+    },
+    "sha256": "5c1d23c1b156e1c2996f724e6c3294435699bdb276edfba1ba8fcbf3dda6e32a",
+    "revision": "pantry-lime-2",
+    "levels": [
+      14,
+      18
+    ]
+  },
+  "cloth-tiger": {
+    "name": "布老虎",
+    "url": "./assets/household/cloth-tiger.glb",
+    "source": "./assets-source/household/cloth-tiger.glb",
+    "triangles": 6134,
+    "meshes": 5,
+    "bytes": 171356,
+    "bounds": {
+      "min": [
+        -0.40125641226768494,
+        -0.4783680737018585,
+        -0.2692052721977234
+      ],
+      "max": [
+        0.4588916003704071,
+        0.48260167241096497,
+        0.34319519996643066
+      ]
+    },
+    "sha256": "5c55d1d315795fdec773d2d18e446634c0102a8f58605ca5fcc8c78a72494dd9",
+    "revision": "cloth-toys-1",
+    "levels": [
+      15,
+      28
+    ]
+  },
+  "cloth-rabbit": {
+    "name": "布兔子",
+    "url": "./assets/household/cloth-rabbit.glb",
+    "source": "./assets-source/household/cloth-rabbit.glb",
+    "triangles": 4934,
+    "meshes": 5,
+    "bytes": 139708,
+    "bounds": {
+      "min": [
+        -0.2945268452167511,
+        -0.47326844930648804,
+        -0.27850207686424255
+      ],
+      "max": [
+        0.3328227400779724,
+        0.5482171773910522,
+        0.2792835533618927
+      ]
+    },
+    "sha256": "8ef293a38b6e5723755a96a86760c2f3c7d8f9dd79039c3c8ec9d5288420ef46",
+    "revision": "cloth-toys-1",
+    "level": 15
+  },
+  "pellet-drum": {
+    "name": "拨浪鼓",
+    "url": "./assets/household/pellet-drum.glb",
+    "source": "./assets-source/household/pellet-drum.glb",
+    "triangles": 2612,
+    "meshes": 5,
+    "bytes": 76068,
+    "bounds": {
+      "min": [
+        -0.4004916548728943,
+        -0.4183403253555298,
+        -0.21565765142440796
+      ],
+      "max": [
+        0.41417959332466125,
+        0.43856361508369446,
+        0.26311030983924866
+      ]
+    },
+    "sha256": "02f6cfaf4bfcf7e43188022e75289c0d6506729f7aebb69dfd5fd71d6be61fd3",
+    "revision": "cloth-toys-1",
+    "levels": [
+      15,
+      17
+    ]
+  },
+  "silk-lantern": {
+    "name": "红灯笼",
+    "url": "./assets/household/silk-lantern.glb",
+    "source": "./assets-source/household/silk-lantern.glb",
+    "triangles": 3162,
+    "meshes": 4,
+    "bytes": 86848,
+    "bounds": {
+      "min": [
+        -0.31793713569641113,
+        -0.47120389342308044,
+        -0.2968243360519409
+      ],
+      "max": [
+        0.2881043553352356,
+        0.3990878164768219,
+        0.3019779920578003
+      ]
+    },
+    "sha256": "14f7f50b751847738ee94909e9b64c0b750e90e2cad2cd7c67bcd4cf9632f90c",
+    "revision": "cloth-toys-1",
+    "levels": [
+      15,
+      17
+    ]
+  },
+  "embroidered-pouch": {
+    "name": "绣花荷包",
+    "url": "./assets/household/embroidered-pouch.glb",
+    "source": "./assets-source/household/embroidered-pouch.glb",
+    "triangles": 2740,
+    "meshes": 5,
+    "bytes": 80224,
+    "bounds": {
+      "min": [
+        -0.2850510776042938,
+        -0.33811745047569275,
+        -0.1961831897497177
+      ],
+      "max": [
+        0.25377213954925537,
+        0.37878334522247314,
+        0.22973500192165375
+      ]
+    },
+    "sha256": "6d22e5f6139fcab95bed2347a0c71ddb6edac17d97d71eea9f31a36efa818de3",
+    "revision": "cloth-toys-1",
+    "levels": [
+      15,
+      17
+    ]
+  },
+  "school-backpack": {
+    "name": "蓝书包",
+    "url": "./assets/household/school-backpack.glb",
+    "source": "./assets-source/household/school-backpack.glb",
+    "triangles": 2154,
+    "meshes": 5,
+    "bytes": 64640,
+    "bounds": {
+      "min": [
+        -0.42892444133758545,
+        -0.43213769793510437,
+        -0.3459360897541046
+      ],
+      "max": [
+        0.3478364646434784,
+        0.38757845759391785,
+        0.2695704996585846
+      ]
+    },
+    "sha256": "a1b8cdc33257c50155d7c63c83ae0fec7badcea89b93f29cac2df81c53836350",
+    "revision": "school-outing-1",
+    "level": 16
+  },
+  "skate-deck": {
+    "name": "红滑板",
+    "url": "./assets/household/skate-deck.glb",
+    "source": "./assets-source/household/skate-deck.glb",
+    "triangles": 2722,
+    "meshes": 6,
+    "bytes": 101556,
+    "bounds": {
+      "min": [
+        -0.3497106432914734,
+        -0.39971524477005005,
+        -0.30861273407936096
+      ],
+      "max": [
+        0.39784377813339233,
+        0.41912293434143066,
+        0.2677476108074188
+      ]
+    },
+    "sha256": "aeb4a217732e9b727265a3b019be3e45279394f97b39495734f6e3e26c5a5af5",
+    "revision": "school-outing-3",
+    "levels": [
+      16,
+      21
+    ]
+  },
+  "school-bottle": {
+    "name": "随身水壶",
+    "url": "./assets/household/school-bottle.glb",
+    "source": "./assets-source/household/school-bottle.glb",
+    "triangles": 1062,
+    "meshes": 3,
+    "bytes": 31780,
+    "bounds": {
+      "min": [
+        -0.292184978723526,
+        -0.48825594782829285,
+        -0.25733792781829834
+      ],
+      "max": [
+        0.3550829291343689,
+        0.4832971394062042,
+        0.23461437225341797
+      ]
+    },
+    "sha256": "9162291062afb1d171ac10f897b795d74f2ce9ab645130b0b471220f712bfbbe",
+    "revision": "school-outing-1",
+    "levels": [
+      16,
+      25
+    ]
+  },
+  "lunch-tin": {
+    "name": "搪瓷饭盒",
+    "url": "./assets/household/lunch-tin.glb",
+    "source": "./assets-source/household/lunch-tin.glb",
+    "triangles": 2304,
+    "meshes": 5,
+    "bytes": 70744,
+    "bounds": {
+      "min": [
+        -0.4357181191444397,
+        -0.3429355323314667,
+        -0.2401343733072281
+      ],
+      "max": [
+        0.3969445824623108,
+        0.29161930084228516,
+        0.3110770285129547
+      ]
+    },
+    "sha256": "988865bf907a867b1fa9269052d8e46f62c32a2484a482ca572616216ea97227",
+    "revision": "school-outing-1",
+    "level": 16
+  },
+  "pencil-case": {
+    "name": "文具袋",
+    "url": "./assets/household/pencil-case.glb",
+    "source": "./assets-source/household/pencil-case.glb",
+    "triangles": 1894,
+    "meshes": 4,
+    "bytes": 63512,
+    "bounds": {
+      "min": [
+        -0.3595898747444153,
+        -0.4446307122707367,
+        -0.16699694097042084
+      ],
+      "max": [
+        0.3461863398551941,
+        0.4300349950790405,
+        0.2005452811717987
+      ]
+    },
+    "sha256": "32ef7a69453132b2144bc23ec83b98ad446067e272a0b65420ad6e40fa99d4e9",
+    "revision": "school-outing-1",
+    "level": 16
+  },
+  "bamboo-steamer": {
+    "name": "竹蒸笼",
+    "url": "./assets/household/bamboo-steamer.glb",
+    "source": "./assets-source/household/bamboo-steamer.glb",
+    "triangles": 3664,
+    "meshes": 6,
+    "bytes": 118004,
+    "bounds": {
+      "min": [
+        -0.4320000112056732,
+        -0.44962504506111145,
+        -0.4200308620929718
+      ],
+      "max": [
+        0.4320000112056732,
+        0.433351993560791,
+        0.3969656825065613
+      ]
+    },
+    "sha256": "b51a6d26e95c972ffbf5f6f3839744bc7505de99dc6099093743a5d9dd75b405",
+    "revision": "bamboo-steamer-2",
+    "levels": [
+      1,
+      29,
+      32,
+      719
+    ]
+  },
+  "balloon-star": {
+    "name": "金色星星气球",
+    "url": "./assets/household/balloon-star.glb",
+    "source": "./assets-source/household/balloon-star.glb",
+    "triangles": 3040,
+    "meshes": 4,
+    "bytes": 67664,
+    "bounds": {
+      "min": [
+        -0.49264729022979736,
+        -0.5665664672851562,
+        -0.15299999713897705
+      ],
+      "max": [
+        0.49264729022979736,
+        0.5729999542236328,
+        0.15299999713897705
+      ]
+    },
+    "sha256": "8c0b666cfc405b7da2e583143eebf728e86ff30962bfec8be86be94d9a2ac553",
+    "revision": "fair-lime-1",
+    "level": 17
+  },
+  "balloon-heart": {
+    "name": "玫红爱心气球",
+    "url": "./assets/household/balloon-heart.glb",
+    "source": "./assets-source/household/balloon-heart.glb",
+    "triangles": 3040,
+    "meshes": 4,
+    "bytes": 67656,
+    "bounds": {
+      "min": [
+        -0.45436742901802063,
+        -0.5500367879867554,
+        -0.15299999713897705
+      ],
+      "max": [
+        0.45436742901802063,
+        0.4396919906139374,
+        0.15299999713897705
+      ]
+    },
+    "sha256": "b37b1fbc8c31241990d39dfb9ef368f3a4a5b9503e89d8946d698181f57ef933",
+    "revision": "fair-lime-1",
+    "level": 17
+  },
+  "balloon-bear": {
+    "name": "蓝色小熊气球",
+    "url": "./assets/household/balloon-bear.glb",
+    "source": "./assets-source/household/balloon-bear.glb",
+    "triangles": 4624,
+    "meshes": 8,
+    "bytes": 113040,
+    "bounds": {
+      "min": [
+        -0.43822431564331055,
+        -0.548674464225769,
+        -0.15299999713897705
+      ],
+      "max": [
+        0.4411171078681946,
+        0.44419950246810913,
+        0.16487846183776855
+      ]
+    },
+    "sha256": "748a510b2b586c17abb2c00585a0f05ca8cc4c15161ba5fc245f4a13a6ee7cd0",
+    "revision": "fair-lime-1",
+    "levels": [
+      17,
+      28
+    ]
+  },
+  "balloon-round": {
+    "name": "紫色圆气球",
+    "url": "./assets/household/balloon-round.glb",
+    "source": "./assets-source/household/balloon-round.glb",
+    "triangles": 3040,
+    "meshes": 4,
+    "bytes": 67620,
+    "bounds": {
+      "min": [
+        -0.4009999930858612,
+        -0.576036810874939,
+        -0.15299999713897705
+      ],
+      "max": [
+        0.4009999930858612,
+        0.48899999260902405,
+        0.15299999713897705
+      ]
+    },
+    "sha256": "686ff16ac6f06472dd70376624d82fcdb679aa75a8db8a0d632b61cd1d0f70f2",
+    "revision": "fair-lime-1",
+    "level": 17
+  }
+}

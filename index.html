@@ -1,0 +1,56 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>好物三消</title><link rel="icon" href="assets/real-surfaces/tool-hint.webp"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="lime-theme.css"></head><body class="game-shell" data-release>
+<main id="game" class="game-table" aria-label="好物三消">
+<header class="game-hud">
+  <span id="level">第 01 关</span>
+  <div class="clock"><strong id="timer" aria-label="剩余时间">03:00</strong><span id="freeze-counter" hidden></span><progress id="timer-meter" max="1" value="1" aria-hidden="true"></progress></div>
+  <div class="hud-actions"><button id="levels" class="round" aria-label="关卡目录" disabled>☷</button><button id="pause" class="round" aria-label="暂停">Ⅱ</button></div>
+</header>
+<section class="targets" aria-labelledby="target-heading">
+  <h2 id="target-heading">收集目标</h2><div id="targets"></div>
+</section>
+<section id="playfield"><canvas id="scene" aria-label="三维物品桌，点击三个相同物件消除"></canvas><div id="toast" role="status"></div><div id="combo"></div><div id="starter-guide" role="status" hidden></div><div id="board-controls" hidden>
+  <button id="quick-zoom" aria-pressed="false" hidden>放大盘面</button>
+  <button id="board-tools-toggle" aria-expanded="false" aria-controls="board-tools">盘面选项</button>
+  <div id="board-tools" role="group" aria-label="盘面选项" hidden>
+    <div id="configuration-row" class="board-options-row">
+      <label for="configuration">关卡配置</label>
+      <select id="configuration" aria-describedby="configuration-note"></select>
+      <small id="configuration-note">切换配置会开启新一局</small>
+    </div>
+    <div id="zoom-controls" class="board-options-row">
+      <span>盘面缩放</span>
+      <div class="zoom-buttons">
+        <button id="zoom-out" aria-label="缩小盘面">−</button>
+        <button id="zoom-reset" aria-label="复位盘面">1×</button>
+        <button id="zoom-in" aria-label="放大盘面">＋</button>
+      </div>
+    </div>
+    <button id="board-reference">查看参考盘面</button>
+  </div>
+</div></section>
+<section class="tray-wrap"><div class="sr-only" id="capacity">收纳槽 0 / 7</div><div id="tray"></div></section>
+<footer><button id="hint"><span aria-hidden="true"><canvas class="tool-icon" width="96" height="96"></canvas></span><span class="booster-name">吸尘器</span><small>3 次</small></button><button id="undo"><span aria-hidden="true"><canvas class="tool-icon" width="96" height="96"></canvas></span><span class="booster-name">撤回</span><small>3 次</small></button><button id="shuffle"><span aria-hidden="true"><canvas class="tool-icon" width="96" height="96"></canvas></span><span class="booster-name">重排</span><small>3 次</small></button><button id="freeze"><span aria-hidden="true"><canvas class="tool-icon" width="96" height="96"></canvas></span><span class="booster-name">冰冻</span><small>第 9 关开启</small></button></footer>
+<div id="modal" class="overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="dialog"><span class="dialog-kicker">好物三消</span><div id="modal-icon">3</div><div id="victory-items" aria-hidden="true"></div><h2 id="modal-title">一桌好物，等你来消</h2><p id="modal-text">点选三个相同物件即可消除。<br>收齐上方目标就过关，收纳槽别放满哦。</p><button id="primary" class="primary" disabled>开始第 1 关</button><button id="secondary" class="secondary" hidden>重新开始</button><button id="sound" class="secondary sound-control" hidden aria-pressed="true"><span aria-hidden="true">♪</span>声音<small>已开启</small></button><div id="pause-configuration" hidden></div><button id="modal-levels" class="secondary" disabled>选关</button></div></div>
+<div id="reference-panel" class="overlay" hidden><section class="level-dialog"><div class="menu-title"><h2>本关参考盘面</h2><button id="reference-close" class="round" aria-label="关闭参考盘面">×</button></div><p>目标、干扰物数量与计时按此公开配置；本地堆积位置仍为近似。</p><img id="reference-image" alt="当前配置的原始盘面参考"><p id="reference-summary"></p><a id="reference-source" target="_blank" rel="noopener">查看配置来源 ↗</a></section></div>
+<div id="level-menu" class="overlay" role="dialog" aria-modal="true" aria-labelledby="level-menu-title" hidden>
+  <section class="level-dialog">
+    <div class="menu-title"><h2 id="level-menu-title">选择关卡</h2><button id="close-levels" class="round" aria-label="关闭关卡目录">×</button></div>
+    <div class="level-search"><input id="level-search" type="search" inputmode="numeric" placeholder="输入关号查找" aria-label="搜索关卡编号"></div>
+    <p id="level-search-status" role="status" hidden></p>
+    <div id="level-list"></div>
+    <nav id="level-pages" aria-label="关卡分页">
+      <button id="level-prev" type="button">上一页</button>
+      <span id="level-range" aria-live="polite"></span>
+      <button id="level-next" type="button">下一页</button>
+    </nav>
+    <span id="level-quality" hidden></span><a id="source-link" hidden></a>
+  </section>
+</div></main><script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script><script type="module">
+import('./game.js').catch(error=>{
+ console.error('Game startup failed',error);
+ document.getElementById('modal').hidden=false;
+ document.getElementById('modal-title').textContent='游戏未能启动';
+ document.getElementById('modal-text').textContent='请检查网络连接，并使用支持 WebGL 2 的浏览器重新加载。';
+ const retry=document.getElementById('primary');retry.disabled=false;retry.textContent='重新加载';retry.onclick=()=>location.reload();
+});
+</script></body></html>

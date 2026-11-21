@@ -1320,8 +1320,9 @@ function showResult(){
 $('primary').textContent=`开始第 ${progress.current} 关`;
 $('primary').onclick=()=>start(progress.current,progress.variant);
 if(savedRound){
- $('modal-icon').textContent='↪';
- modal('接着玩第 '+level+' 关','盘面、收纳槽与道具次数已存好。','继续上次游戏',resume,true);
+ $('modal-text').textContent='第 '+level+' 关 · 接着收集';
+ $('primary').textContent='继续上次游戏';
+ $('primary').onclick=resume;
 }
 $('pause').onclick=()=>{if(state.status!=='playing')return;state.status='paused';saveRound();$('modal-icon').textContent='Ⅱ';modal('歇一歇，等你回来','物件都在，倒计时已暂停。','继续游戏',resume,true)};
 document.addEventListener('visibilitychange',()=>{

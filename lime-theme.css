@@ -852,19 +852,27 @@ body.game-shell { gap: 0; }
 #game .chain-star{position:absolute;z-index:1;transform:translate(-50%,-100%);padding:0 8px;min-height:36px;border:2px solid #fff4bb;border-radius:20px;background:#963f15;color:#fff6ca;font-size:14px;font-weight:750;box-shadow:0 2px 5px #54301255;touch-action:manipulation}
 
 #victory-items{display:none}
-#game #modal.victory{padding:0;background:radial-gradient(ellipse at 50% 45%,#937344c9,#45381ce8);backdrop-filter:blur(5px)}
-#game #modal.victory .dialog{position:relative;isolation:isolate;width:min(100%,66.666dvh,480px);height:auto;aspect-ratio:2/3;max-height:100%;max-width:none;overflow:hidden;padding:0;border:0;border-radius:18px;background:#ffe6af url('assets/glazed-objects/victory-stage.webp') center/100% 100%;box-shadow:0 14px 55px #33281855;color:#59321a;animation:stage-in .28s ease-out}
+#game #modal.victory{container-type:size;padding:0;background:radial-gradient(ellipse at 50% 45%,#937344c9,#45381ce8);backdrop-filter:blur(5px)}
+#game #modal.victory .dialog{position:relative;isolation:isolate;width:100%;height:100%;max-height:none;max-width:none;overflow:hidden;padding:0;border:0;border-radius:0;background:#ffe6af url('assets/glazed-objects/victory-stage.webp') center/cover;box-shadow:0 14px 55px #33281855;color:#59321a;animation:stage-in .28s ease-out}
 #game #modal.victory .dialog-kicker,#game #modal.victory #modal-icon{display:none}
 #game #modal.victory #modal-title,#game #modal.victory #modal-text{position:absolute;margin:0;left:0;width:100%;text-align:center;line-height:1.1;min-height:0}
 #game #modal.victory #modal-text{top:17%;font-size:clamp(14px,2.3dvh,20px);font-weight:700;letter-spacing:.1em;color:#805124}
-#game #modal.victory #modal-title{top:23%;font-size:clamp(32px,7.5dvh,64px);font-weight:950;letter-spacing:.03em;color:#943e13;text-shadow:0 2px #fff8d7,0 4px #dba85f}
+#game #modal.victory #modal-title{top:23%;font-size:clamp(28px,min(13cqw,7.5cqh),64px);font-weight:950;letter-spacing:.03em;color:#943e13;text-shadow:0 2px #fff8d7,0 4px #dba85f}
 #game #modal.victory #victory-items{position:absolute;display:flex;align-items:flex-end;justify-content:center;left:9%;right:9%;top:38%;height:18%}
 #victory-items img{object-fit:contain;min-width:0;width:34%;height:100%;filter:drop-shadow(1px 6px 3px #62441e50);animation:reward-land .47s cubic-bezier(.25,.75,.4,1.2) backwards;animation-delay:var(--entry-delay)}
 #victory-items img:nth-child(2n){height:90%}
 #game #modal.victory #primary{position:absolute;left:12%;width:76%;top:71%;height:10%;min-height:44px;margin:0;padding:0;border-radius:999px;border:2px solid #fff0b0;background:linear-gradient(#ffbb38,#f28a12 57%,#df6806);box-shadow:inset 0 2px 0 #ffe8a1,0 4px 0 #9d4d10,0 8px 13px #7b4a2440;font-weight:850;font-size:clamp(18px,3.8dvh,28px);color:#492608}
 #game #modal.victory #primary::after{content:'›';padding-left:.65em;font-size:1.2em}
 #game #modal.victory #primary:active{transform:translateY(3px);box-shadow:inset 0 2px 4px #a14e1f55}
-#game #modal.victory #modal-levels{position:absolute;top:85%;left:30%;width:40%;margin:0;background:transparent;color:#714529;border:0;box-shadow:none}
+#game #modal.victory #modal-levels{position:absolute;bottom:max(5%,env(safe-area-inset-bottom));left:30%;width:40%;min-height:44px;margin:0;background:transparent;color:#714529;border:0;box-shadow:none}
 @keyframes stage-in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
 @keyframes reward-land{from{opacity:0;transform:translateY(-45%) rotate(-8deg)}65%{opacity:1;transform:translateY(4%) rotate(2deg)}to{transform:none}}
 @media(prefers-reduced-motion:reduce){#game #modal.victory .dialog,#victory-items img{animation:none}}
+
+@container (min-aspect-ratio: 4/5) {
+ #game #modal.victory .dialog { width:min(100%, max(300px, 80cqh)); background-size:100% 100%; }
+}
+@container (max-height: 500px) {
+ #game #modal.victory #primary { top:auto; bottom:calc(4% + 50px); }
+ #game #modal.victory #modal-levels { bottom:4%; }
+}

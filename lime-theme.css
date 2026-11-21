@@ -877,7 +877,7 @@ body.game-shell { gap: 0; }
  #game #modal.victory #modal-levels { bottom:4%; }
 }
 
-/* The title marker exists only on the opening screen. */
+/* The title marker exists on illustrated cover screens. */
 #modal:has(.opening-title) { container-type:size; }
 #game #modal:has(.opening-title) { padding:0; background:#f5dfba; }
 #game #modal:has(.opening-title) .dialog {
@@ -914,4 +914,24 @@ body.game-shell { gap: 0; }
   #game .dialog:has(.opening-title) #modal-text { top:40%; font-size:min(3.4cqw,5cqh); }
   #game .dialog:has(.opening-title) #primary { left:4%; width:37%; }
   #game .dialog:has(.opening-title) #modal-levels { left:4%; width:37%; }
+}
+
+#game .dialog:has(.pause-title) :is(#secondary,#sound,#modal-levels) {
+  position:absolute; bottom:max(2.6%,env(safe-area-inset-bottom)); width:30%;
+  height:44px; min-height:44px; margin:0; padding:0; border:0; border-radius:14px;
+  background:#fff3dca8; color:#49341a; box-shadow:none; font-size:14px; font-weight:650;
+}
+#game .dialog:has(.pause-title) #secondary { left:3%; }
+#game .dialog:has(.pause-title) #sound { left:35%; display:flex; gap:3px; align-items:center; justify-content:center; }
+#game .dialog:has(.pause-title) #sound small { color:inherit; font-size:11px; }
+#game .dialog:has(.pause-title) #modal-levels { left:67%; }
+#game .dialog:has(.pause-title) #primary { bottom:calc(max(2.6%,env(safe-area-inset-bottom)) + 55px); }
+#game .dialog:has(.pause-title) #pause-configuration {
+  position:absolute; top:27%; left:12%; width:76%; margin:0; padding:0;
+}
+#game .dialog:has(.pause-title) #configuration-row:not([hidden]) {
+  background:#fff5dfed; border-radius:12px; padding:8px 12px;
+}
+@container (min-aspect-ratio:13/10) {
+  #game .dialog:has(.pause-title) #pause-configuration { top:3%; left:auto; right:2%; width:36%; }
 }

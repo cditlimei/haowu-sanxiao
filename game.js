@@ -1324,7 +1324,17 @@ if(savedRound){
  $('primary').textContent='继续上次游戏';
  $('primary').onclick=resume;
 }
-$('pause').onclick=()=>{if(state.status!=='playing')return;state.status='paused';saveRound();$('modal-icon').textContent='Ⅱ';modal('歇一歇，等你回来','物件都在，倒计时已暂停。','继续游戏',resume,true)};
+$('pause').onclick=()=>{
+ if(state.status!=='playing')return;
+ state.status='paused';
+ saveRound();
+ updateTimer();
+ modal('游戏暂停','第 '+level+' 关 · 剩余 '+$('timer').textContent,'继续游戏',resume,true);
+ const title=document.createElement('span');
+ title.className='opening-title pause-title';
+ title.textContent=$('modal-title').textContent;
+ $('modal-title').replaceChildren(title);
+};
 document.addEventListener('visibilitychange',()=>{
  if(!document.hidden)return;
  cancelFlights();

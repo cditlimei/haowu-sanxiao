@@ -454,10 +454,15 @@ function openingDeal(plan,config,offset,late=false){
  else for(let n=0;n<3;n++)deal(required);
  return {...plan,pace,piles:piles.map(s=>s.reverse()),route};
 }
-export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true){
+// Revised transition deals. Existing saves keep the original late-game layout.
+export const transitionOffsets={1000:108,1003:12};
+export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false){
  const plan=standardDesign(config,tuned);
  const paced=useCadence&&usesCadence(config)?pacedDeal(plan,config):plan;
- if(useLate&&usesLateChallenge(config))return openingDeal(paced,config,lateOffsets[config.id],true);
+ if(useLate&&usesLateChallenge(config)){
+  const offset=originalTransition?lateOffsets[config.id]:transitionOffsets[config.id]??lateOffsets[config.id];
+  return openingDeal(paced,config,offset,true);
+ }
  if(useOpening&&usesOpeningChallenge(config))return openingDeal(paced,config,openingOffsets[config.id]);
  if(!useSample||!hasSampleStacks(config))return paced;
  const sample=challengeStacks[config.id];

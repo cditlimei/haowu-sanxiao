@@ -1,6 +1,6 @@
 import {getLevel} from '../data/levels.mjs';
 import {createState} from '../rules.mjs';
-import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge} from './level-workshop/design.mjs?rev=late2';
+import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets} from './level-workshop/design.mjs?rev=cross1';
 
 const compiled=new WeakMap();
 export function campaignConfig(level,variant,savedSeed){
@@ -18,12 +18,15 @@ export function campaignConfig(level,variant,savedSeed){
  const openingSeed=base.seed+35005000;
  const useOpening=opening&&(savedSeed===undefined||savedSeed===openingSeed);
  const late=usesLateChallenge(base);
- const lateSeed=base.seed+35006000;
+ const revised=late&&Object.hasOwn(transitionOffsets,level);
+ const previousLateSeed=base.seed+35006000;
+ const originalTransition=revised&&savedSeed===previousLateSeed;
+ const lateSeed=revised&&!originalTransition?base.seed+35007000:previousLateSeed;
  const useLate=late&&(savedSeed===undefined||savedSeed===lateSeed);
  const useCadence=cadence&&(savedSeed===undefined||savedSeed===cadenceSeed||useOpening||useLate);
- const cacheable=(!late||useLate)&&(!opening||useOpening)&&(!cadence||useCadence)&&!historical&&(!sample||useSample);
+ const cacheable=!originalTransition&&(!late||useLate)&&(!opening||useOpening)&&(!cadence||useCadence)&&!historical&&(!sample||useSample);
  if(cacheable&&compiled.has(base))return compiled.get(base);
- const plan=design(base,!historical,useSample,useCadence,useOpening,useLate);
+ const plan=design(base,!historical,useSample,useCadence,useOpening,useLate,originalTransition);
  const piles=plan.piles;
  const counts=new Map();
  for(const type of piles.flat())counts.set(type,(counts.get(type)??0)+1);

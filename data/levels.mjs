@@ -3169,6 +3169,29 @@ const milestone={...LEVELS[milestoneIndex-1],id:2000,title:'双层收尾',source
  seed:2026131606,notes:'一堆取出两件，再到另一堆补齐最后一组。'};
 LEVELS.splice(milestoneIndex,0,milestone);
 variantsByLevel.set(milestone.id,[milestone]);
+// Add this authored sequence after the legacy rotation so old rounds retain their inventory.
+const bridgeStart=LEVELS.findIndex(level=>level.id===2993);
+const bridgeDeals=[
+ ['volleyball','apple','拆堆',16],['soccer','pear','挑战',8],['basketball','banana','缓冲',121],
+ ['rugby','cherry','拆堆',85],['tennis','strawberry','缓冲',93],['cherry','rugby','拆堆',130],
+ ['strawberry','tennis','挑战',85],['banana','basketball','缓冲',32],
+ ['pear','soccer','挑战',30],['apple','volleyball','缓冲',138],
+];
+for(const [step,[outgoing,incoming,bridgePace,bridgeOffset]] of bridgeDeals.entries()){
+ const previous=LEVELS[bridgeStart+step],id=2994+step,type=typeId(incoming);
+ const goals=[type,previous.introducedType,previous.goals.find(g=>
+  g.type!==previous.introducedType&&g.type!==typeId(outgoing)&&g.type!==type).type]
+  .map((type,i)=>({type,count:i===0?12:9}));
+ const inventory=previous.inventory.map(item=>{
+  const next=item.type===typeId(outgoing)?type:item.type;
+  return goals.find(g=>g.type===next)??{type:next,count:3};
+ });
+ const board={...previous,id,bridgePace,bridgeOffset,goals,inventory,introducedType:type,
+  title:'收集'+ITEMS[type].name,seed:2026111606+id*10,source:'原创关卡',
+  notes:'点选堆顶，收齐三个同款。'};
+ LEVELS.splice(bridgeStart+step+1,0,board);
+ variantsByLevel.set(id,[board]);
+}
 const levelIndex=new Map(LEVELS.map((level,index)=>[level.id,index]));
 
 export function getLevelVariants(id){const variants=variantsByLevel.get(Number(id));if(variants)return variants;const base=LEVELS[levelIndex.get(Number(id))];if(!base)throw new RangeError(`Unknown level: ${id}`);return [{...base,variant:0}];}

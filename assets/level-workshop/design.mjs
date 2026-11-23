@@ -35,7 +35,44 @@ function lateStacks(config,types,r,recovery,challenge){
  return {id:config.id,variant:config.variant??0,piles:pools.map(a=>a.reverse()),route,goals,capacity:7,
   starAfter:recovery?2:3,pace:milestone?'压轴收集':recovery?'缓冲':challenge?'深堆挑战':'交错深堆'};
 }
-export function design(config,tuned=true){
+// Each stack lists item types from bottom to top.
+const challengeStacks={
+ 10: {route:[2,0,1,3,4,5,2,0,4,3,5,1,5,4,2,1,3,0,4,3,1,2,0,5,3,2,5,0,4,1,1,3,5],variant:1, piles:[
+  [30,11199,29,0,0],
+  [2,30,4,11509,29,45],
+  [11199,10961,29,33,33],
+  [2,10961,11199,6,11509,33],
+  [30,10961,6,45,0],
+  [2,4,4,11509,6,45],
+ ]},
+ 569: {route:[3,5,4,0,1,2,5,0,2,1,4,3,3,0,5,2,4,1,3,1,4,0,5,2,3,0,2,5,1,4,2,1,3,4,5,0,0,5,2,3,4,1,3,0,2],variant:6, piles:[
+  [30,0,10961,33,29,45,12588,10961],
+  [12588,6,10961,4,45,11509,11509],
+  [30,0,11199,6,29,11509,29,29],
+  [30,12588,33,11199,11509,11509,11509,10961],
+  [0,10961,33,45,29,12588,12588],
+  [12588,6,11199,4,4,10961,29],
+ ]},
+ 1530: {route:[5,0,4,2,3,1,4,0,2,1,3,5,1,2,0,4,3,5,4,5,3,2,1,0,5,3,1,0,2,4,0,2,1,3,5,4,2,0,5,3,1,4,4,0,5,1,2,3,5,4,3,0,1,2],variant:6, piles:[
+  [69,78,67,68,68,71,76,71,78],
+  [69,67,67,12575,70,76,12576,77,78],
+  [69,78,73,70,73,71,12575,78,12576],
+  [70,67,73,73,12575,12575,71,71,77],
+  [70,73,67,73,12575,12576,12576,12576,71],
+  [70,67,78,70,68,76,12575,77,12576],
+ ]},
+};
+
+export function hasSampleStacks(config){
+ return challengeStacks[config.id]?.variant===config.variant&&Object.hasOwn(challengeStacks,config.id);
+}
+export function design(config,tuned=true,useSample=true){
+ const plan=standardDesign(config,tuned);
+ if(!useSample||!hasSampleStacks(config))return plan;
+ const sample=challengeStacks[config.id];
+ return {...plan,piles:sample.piles.map(stack=>[...stack]),route:[...sample.route]};
+}
+function standardDesign(config,tuned){
  if(config.layout?.chainStacks){
   const items=config.inventory.flatMap(({type,count})=>Array(count).fill(type));
   const piles=config.layout.fans.map(fan=>fan.map(id=>items[id]));

@@ -1,6 +1,6 @@
 import {getLevel} from '../data/levels.mjs';
 import {createState} from '../rules.mjs';
-import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge} from './level-workshop/design.mjs?rev=front2';
+import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge} from './level-workshop/design.mjs?rev=late2';
 
 const compiled=new WeakMap();
 export function campaignConfig(level,variant,savedSeed){
@@ -17,10 +17,13 @@ export function campaignConfig(level,variant,savedSeed){
  const opening=usesOpeningChallenge(base);
  const openingSeed=base.seed+35005000;
  const useOpening=opening&&(savedSeed===undefined||savedSeed===openingSeed);
- const useCadence=cadence&&(savedSeed===undefined||savedSeed===cadenceSeed||useOpening);
- const cacheable=(!opening||useOpening)&&(!cadence||useCadence)&&!historical&&(!sample||useSample);
+ const late=usesLateChallenge(base);
+ const lateSeed=base.seed+35006000;
+ const useLate=late&&(savedSeed===undefined||savedSeed===lateSeed);
+ const useCadence=cadence&&(savedSeed===undefined||savedSeed===cadenceSeed||useOpening||useLate);
+ const cacheable=(!late||useLate)&&(!opening||useOpening)&&(!cadence||useCadence)&&!historical&&(!sample||useSample);
  if(cacheable&&compiled.has(base))return compiled.get(base);
- const plan=design(base,!historical,useSample,useCadence,useOpening);
+ const plan=design(base,!historical,useSample,useCadence,useOpening,useLate);
  const piles=plan.piles;
  const counts=new Map();
  for(const type of piles.flat())counts.set(type,(counts.get(type)??0)+1);
@@ -28,7 +31,7 @@ export function campaignConfig(level,variant,savedSeed){
  let id=0;
  const ids=new Map(inventory.map(({type,count})=>[type,Array.from({length:count},()=>id++)]));
  const fans=piles.map(pile=>pile.map(type=>ids.get(type).pop()));
- const config={...base,seed:useOpening?openingSeed:useCadence?cadenceSeed:useSample?sampleSeed:tuned?base.seed+35002000:oldSeed,inventory,
+ const config={...base,seed:useLate?lateSeed:useOpening?openingSeed:useCadence?cadenceSeed:useSample?sampleSeed:tuned?base.seed+35002000:oldSeed,inventory,
   goals:plan.goals,boosters:{...base.boosters,star:plan.starAfter?1:0},
   layout:{...base.layout,aspect:.675,bounds:[.035,.08,.965,.89],fans,chainStacks:true,starAfter:plan.starAfter},
   accuracy:plan.pace+' · 分层拆堆',notes:'点取各堆最上方的物件，凑齐三个同款。'};

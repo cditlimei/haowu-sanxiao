@@ -1,4 +1,4 @@
-import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=front2';
+import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=late2';
 import {availableHeads} from './assets/stack-order.mjs';
 import {variantLooks,variantAppearances} from './assets/real-surfaces/variant-looks.mjs';
 import {prepareIndividualAtlas,releaseIndividualAtlases} from './assets/real-surfaces/individual-finish.mjs';

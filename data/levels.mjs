@@ -3177,7 +3177,43 @@ const bridgeDeals=[
  ['strawberry','tennis','挑战',85],['banana','basketball','缓冲',32],
  ['pear','soccer','挑战',30],['apple','volleyball','缓冲',138],
 ];
-for(const [step,[outgoing,incoming,bridgePace,bridgeOffset]] of bridgeDeals.entries()){
+// Each ten-board chapter introduces five familiar objects and then restores the
+// sports set. This also reconnects the last board to level 3084's saved rotation.
+const chapterObjects=[
+ ['toast','avocado','tomato','egg','pepper'],
+ ['coffee','donut','cupcake','waffle','croissant'],
+ ['gamepad','handheld','toytruck','toyrobot','rubik'],
+ ['drum','clarinet','maraca','harp','trumpet'],
+ ['cloth-tiger','cloth-rabbit','pellet-drum','silk-lantern','embroidered-pouch'],
+ ['corncan','corn','taco','watermelon','macaron'],
+ ['school-backpack','skate-deck','school-bottle','lunch-tin','pencil-case'],
+ ['apple','pear','banana','cherry','strawberry'],
+];
+const sports=['volleyball','soccer','basketball','rugby','tennis'];
+const swapOrder=[0,1,2,3,4,3,4,2,1,0];
+const chapterPace=['拆堆','挑战','缓冲','拆堆','挑战','缓冲','拆堆','拆堆','挑战','缓冲'];
+const chapterOffsets=[
+ 54,22,5,25,85,32,31,24,74,2,
+ 59,49,1,17,19,12,17,41,43,27,
+ 15,20,22,14,29,61,58,8,52,8,
+ 95,88,4,7,87,57,12,6,23,32,
+ 3,19,4,53,95,41,48,4,16,11,
+ 5,78,0,73,11,7,32,94,37,68,
+ 1,11,20,26,69,13,36,75,15,16,
+ 2,31,1,32,23,69,72,82,78,16,
+];
+let challengeCount=0;
+for(const [chapter,objects] of chapterObjects.entries()){
+ for(const [step,slot] of swapOrder.entries()){
+  const pace=chapterPace[step];
+  const finish=pace==='挑战'?(challengeCount++%2?'three-stacks':'two-stacks'):undefined;
+  // Keep the previous chapter's final introduction on the board for its next goal.
+  const familiar=slot===0&&chapter%2===0?'friedegg':sports[slot];
+  const pair=step<5?[familiar,objects[slot]]:[objects[slot],familiar];
+  bridgeDeals.push([...pair,pace,chapterOffsets[chapter*10+step],finish]);
+ }
+}
+for(const [step,[outgoing,incoming,bridgePace,bridgeOffset,finish]] of bridgeDeals.entries()){
  const previous=LEVELS[bridgeStart+step],id=2994+step,type=typeId(incoming);
  const goals=[type,previous.introducedType,previous.goals.find(g=>
   g.type!==previous.introducedType&&g.type!==typeId(outgoing)&&g.type!==type).type]
@@ -3189,6 +3225,8 @@ for(const [step,[outgoing,incoming,bridgePace,bridgeOffset]] of bridgeDeals.entr
  const board={...previous,id,bridgePace,bridgeOffset,goals,inventory,introducedType:type,
   title:'收集'+ITEMS[type].name,seed:2026111606+id*10,source:'原创关卡',
   notes:'点选堆顶，收齐三个同款。'};
+ if(finish)board.challengeFinish=finish;
+ else delete board.challengeFinish;
  LEVELS.splice(bridgeStart+step+1,0,board);
  variantsByLevel.set(id,[board]);
 }

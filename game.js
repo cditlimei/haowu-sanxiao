@@ -1,4 +1,4 @@
-import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=pass3000';
+import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=bridge3084';
 import {availableHeads} from './assets/stack-order.mjs';
 import {variantLooks,variantAppearances} from './assets/real-surfaces/variant-looks.mjs';
 import {prepareIndividualAtlas,releaseIndividualAtlases} from './assets/real-surfaces/individual-finish.mjs';
@@ -21,7 +21,7 @@ import {createPileInstances} from './instance-pile.mjs';
 import {tripoAssetStatus} from './tripo-assets.mjs';
 import {buildPile,settlePile} from './pile-layout.mjs';
 import {make,referenceTexturesReady,releaseReferenceTextures,hasSolidModel} from './models.mjs';
-import {LEVELS,ITEMS,nextLevelId,getLevelVariants,sequenceAssetLevel} from './data/levels.mjs?rev=pass3000';
+import {LEVELS,ITEMS,nextLevelId,getLevelVariants,sequenceAssetLevel} from './data/levels.mjs?rev=bridge3084';
 import * as THREE from './node_modules/three/build/three.module.js';
 import {createState,pick,undo,vacuum,clearStarStack,tick,settledGoalRemaining} from './rules.mjs';
 import {hasSewnVolleyball,hasMantelClock,hasRotaryTelephone,hasArcadeCabinet,hasCampingMatchbox,solidItemSphereRadius,solidItemDisplayName,solidItemTexturesReady,localizedObjectName} from './solid-items.mjs';

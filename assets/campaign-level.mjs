@@ -1,6 +1,6 @@
-import {getLevel} from '../data/levels.mjs?rev=pass3000';
+import {getLevel} from '../data/levels.mjs?rev=bridge3084';
 import {createState} from '../rules.mjs';
-import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets} from './level-workshop/design.mjs?rev=pass3000';
+import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets} from './level-workshop/design.mjs?rev=bridge3084';
 
 const compiled=new WeakMap();
 export function campaignConfig(level,variant,savedSeed){

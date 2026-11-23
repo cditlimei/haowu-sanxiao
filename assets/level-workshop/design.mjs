@@ -1,4 +1,4 @@
-import {LEVELS} from '../../data/levels.mjs?rev=pass3000';
+import {LEVELS} from '../../data/levels.mjs?rev=bridge3084';
 import {challengeDeals} from './challenge-deals.mjs';
 export function hasChallengeDeal(config){return config.variant===6&&Object.hasOwn(challengeDeals,config.id);}
 export function rng(seed){
@@ -423,7 +423,7 @@ function openingDeal(plan,config,offset,late=false){
  if(late&&pace==='挑战'){
   const lanes=shuffle(piles.map((_,i)=>i),r);
   // Alternate a pair buried in one stack with a finish across three stacks.
-  const split=config.bridgePace?(id===3002?1:0):id===2000?0:Math.floor(campaignOrder.get(id)/4)%2;
+  const split=config.challengeFinish?config.challengeFinish==='three-stacks':config.bridgePace?(id===3002?1:0):id===2000?0:Math.floor(campaignOrder.get(id)/4)%2;
   endings.push(lanes[0],split?lanes[1]:lanes[0],lanes[2]);
   for(const i of endings)heights[i]--;
  }

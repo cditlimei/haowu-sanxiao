@@ -1,4 +1,4 @@
-import {LEVELS} from '../../data/levels.mjs';
+import {LEVELS} from '../../data/levels.mjs?rev=pass2000';
 import {challengeDeals} from './challenge-deals.mjs';
 export function hasChallengeDeal(config){return config.variant===6&&Object.hasOwn(challengeDeals,config.id);}
 export function rng(seed){
@@ -68,7 +68,8 @@ export function hasSampleStacks(config){
  return challengeStacks[config.id]?.variant===config.variant&&Object.hasOwn(challengeStacks,config.id);
 }
 // Index by playable order because the later level numbers contain gaps.
-const campaignOrder=new Map(LEVELS.map(({id},index)=>[id,index]));
+const cadenceLevels=LEVELS.filter(level=>level.id!==2000);
+const campaignOrder=new Map(cadenceLevels.map(({id},index)=>[id,index]));
 export function usesCadence(config){
  return config.id>10&&config.variant===6&&!hasSampleStacks(config);
 }
@@ -166,10 +167,10 @@ const paceOffsets={
  14017:27,14022:2,14645:11,17681:39,17682:6,17849:42,
 };
 function pacedDeal(plan,config){
- const index=campaignOrder.get(config.id);
+ const index=campaignOrder.get(config.id===2000?1999:config.id);
  const beat=(index-10)%4;
- const afterSample=hasSampleStacks({id:LEVELS[index-1]?.id,variant:6});
- const pace=afterSample||beat===0?'缓冲':beat===3?'挑战':'拆堆';
+ const afterSample=hasSampleStacks({id:cadenceLevels[index-1]?.id,variant:6});
+ const pace=config.id===2000?'挑战':afterSample||beat===0?'缓冲':beat===3?'挑战':'拆堆';
  const width=pace==='缓冲'?2:pace==='挑战'?4:3;
  const counts=new Map();
  for(const type of plan.piles.flat())counts.set(type,(counts.get(type)??0)+1);
@@ -422,7 +423,7 @@ function openingDeal(plan,config,offset,late=false){
  if(late&&pace==='挑战'){
   const lanes=shuffle(piles.map((_,i)=>i),r);
   // Alternate a pair buried in one stack with a finish across three stacks.
-  const split=Math.floor(campaignOrder.get(id)/4)%2;
+  const split=id===2000?0:Math.floor(campaignOrder.get(id)/4)%2;
   endings.push(lanes[0],split?lanes[1]:lanes[0],lanes[2]);
   for(const i of endings)heights[i]--;
  }
@@ -455,13 +456,14 @@ function openingDeal(plan,config,offset,late=false){
  return {...plan,pace,piles:piles.map(s=>s.reverse()),route};
 }
 // Revised transition deals. Existing saves keep the original late-game layout.
-export const transitionOffsets={1000:108,1003:12};
+export const transitionOffsets={1000:108,1003:12,2000:48,2001:12,2002:64,2003:26};
 export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false){
  const plan=standardDesign(config,tuned);
  const paced=useCadence&&usesCadence(config)?pacedDeal(plan,config):plan;
  if(useLate&&usesLateChallenge(config)){
   const offset=originalTransition?lateOffsets[config.id]:transitionOffsets[config.id]??lateOffsets[config.id];
-  return openingDeal(paced,config,offset,true);
+  const deal=config.id===2001&&!originalTransition?{...paced,pace:'缓冲'}:paced;
+  return openingDeal(deal,config,offset,true);
  }
  if(useOpening&&usesOpeningChallenge(config))return openingDeal(paced,config,openingOffsets[config.id]);
  if(!useSample||!hasSampleStacks(config))return paced;

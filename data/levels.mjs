@@ -3163,6 +3163,12 @@ for(const [index,previous] of LEVELS.entries()){
  variantsByLevel.set(previous.id,[continuing,primary,...alternatives]);
  LEVELS[index]=continuing;
 }
+// Insert the milestone after the rotation is built so returning players keep their boards.
+const milestoneIndex=LEVELS.findIndex(level=>level.id===2001);
+const milestone={...LEVELS[milestoneIndex-1],id:2000,title:'双层收尾',source:'原创关卡',
+ seed:2026131606,notes:'一堆取出两件，再到另一堆补齐最后一组。'};
+LEVELS.splice(milestoneIndex,0,milestone);
+variantsByLevel.set(milestone.id,[milestone]);
 const levelIndex=new Map(LEVELS.map((level,index)=>[level.id,index]));
 
 export function getLevelVariants(id){const variants=variantsByLevel.get(Number(id));if(variants)return variants;const base=LEVELS[levelIndex.get(Number(id))];if(!base)throw new RangeError(`Unknown level: ${id}`);return [{...base,variant:0}];}

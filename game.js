@@ -1295,12 +1295,19 @@ function resume(){
  updateStarterGuide();
  saveRound();
 }
+function applyCoverTitle(paused=false){
+ const heading=$('modal-title');
+ const title=document.createElement('span');
+ title.className=paused?'opening-title pause-title':'opening-title';
+ title.textContent=heading.textContent;
+ heading.replaceChildren(title);
+}
 function showResult(){
  const win=state.status==='won',next=nextLevelId(level);
  $('modal-icon').textContent=win?'✓':'↻';
  modal(
-  win?'收齐啦，漂亮！':state.status==='timeout'?'时间到了':'收纳槽满啦',
-  win?`第 ${level} 关目标全部收齐。`:state.status==='timeout'?'下次优先找目标物件。<br>凑齐三个，就能腾出空位。':'先凑已有的对子，留出收纳槽。',
+  win?'收齐啦，漂亮！':state.status==='timeout'?'时间到了':'收纳槽满了',
+  win?`第 ${level} 关目标全部收齐。`:state.status==='timeout'?'第 '+level+' 关 · 先找目标物件':'第 '+level+' 关 · 先凑齐槽里的对子',
   win?(next===null?'已通关 · 查看关卡':'下一关 · '+next):'再试一次',
   ()=>next===null&&win?openLevels():start(win?next:level,win?undefined:state.config.variant),
  );
@@ -1314,6 +1321,8 @@ function showResult(){
    img.style.setProperty('--entry-delay',i*75+'ms');return img;
   });
   $('victory-items').replaceChildren(...figures);
+ }else{
+  applyCoverTitle();
  }
 
 }
@@ -1330,10 +1339,7 @@ $('pause').onclick=()=>{
  saveRound();
  updateTimer();
  modal('游戏暂停','第 '+level+' 关 · 剩余 '+$('timer').textContent,'继续游戏',resume,true);
- const title=document.createElement('span');
- title.className='opening-title pause-title';
- title.textContent=$('modal-title').textContent;
- $('modal-title').replaceChildren(title);
+ applyCoverTitle(true);
 };
 document.addEventListener('visibilitychange',()=>{
  if(!document.hidden)return;

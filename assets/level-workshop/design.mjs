@@ -1,4 +1,4 @@
-import {LEVELS} from '../../data/levels.mjs?rev=bridge3084';
+import {LEVELS} from '../../data/levels.mjs?rev=campaign-a09f0c96992d';
 import {challengeDeals} from './challenge-deals.mjs';
 export function hasChallengeDeal(config){return config.variant===6&&Object.hasOwn(challengeDeals,config.id);}
 export function rng(seed){

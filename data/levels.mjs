@@ -3230,6 +3230,49 @@ for(const [step,[outgoing,incoming,bridgePace,bridgeOffset,finish]] of bridgeDea
  LEVELS.splice(bridgeStart+step+1,0,board);
  variantsByLevel.set(id,[board]);
 }
+// Existing seeds and cadence indices are retained for saved rounds.
+// Boundary adjustments specified in docs/level-design/接续节奏.json.
+const boundaryPace={"1223":"缓冲","1247":"拆堆","1574":"拆堆","1851":"拆堆","1855":"拆堆","1884":"缓冲","1909":"缓冲","1911":"拆堆","1925":"拆堆","1954":"缓冲","1960":"拆堆","1972":"缓冲","1988":"拆堆","2031":"拆堆","2060":"拆堆","2084":"拆堆","2105":"缓冲","2118":"缓冲","2127":"缓冲","2164":"拆堆","2213":"拆堆","2249":"拆堆","2257":"缓冲","2292":"拆堆","2433":"拆堆","2445":"缓冲","2500":"缓冲","2504":"拆堆","2574":"拆堆","2587":"缓冲","2591":"拆堆","2696":"缓冲","2712":"缓冲","2742":"拆堆","2758":"缓冲","2766":"拆堆","2792":"拆堆","2856":"缓冲","5653":"拆堆","5655":"缓冲","13578":"缓冲","13585":"拆堆","13587":"缓冲","13598":"拆堆","13600":"缓冲","13610":"拆堆","13619":"拆堆","13635":"缓冲","13990":"缓冲","13999":"缓冲","14018":"缓冲","14598":"拆堆","14646":"缓冲","17837":"拆堆","17850":"缓冲"};
+const originalMainline=LEVELS.slice();
+const expanded=[];
+for(const [index,left] of originalMainline.entries()){
+ expanded.push(left);
+ const right=originalMainline[index+1];
+ if(!right || right.id===left.id+1)continue;
+ const home=left.inventory.map(item=>item.type);
+ const common=right.goals.find(goal=>home.includes(goal.type))?.type;
+ const slots=home.filter(type=>type!==left.introducedType && type!==common).slice(0,5);
+ let previous=left;
+ for(let id=left.id+1;id<right.id;id++){
+  const step=id-left.id-1,beat=step%10,chapter=Math.floor(step/10);
+  const types=previous.inventory.map(item=>item.type);
+  const pool=chapterObjects[(chapter+index)%chapterObjects.length].map(typeId)
+   .concat(chapterObjects.flat().map(typeId)).filter(type=>!home.includes(type));
+  const visitors=[...new Set(pool)].slice(0,5);
+  const slot=(swapOrder[beat]+chapter)%5;
+  let focus;
+  // Leave a final familiar board to prepare the goals of the returning level.
+  if(left.id+10*(chapter+1)<right.id-1 && slots.length===5){
+   const out=beat<5?slots[slot]:visitors[slot];
+   focus=beat<5?visitors[slot]:slots[slot];
+   types[types.indexOf(out)]=focus;
+  }else focus=id===right.id-1?common:types[(id+chapter)%types.length];
+  const goalTypes=[...new Set([focus,previous.introducedType,...previous.goals.map(g=>g.type),...types])]
+   .filter(type=>types.includes(type)).slice(0,3);
+  const goals=goalTypes.map((type,i)=>({type,count:i===0?12:9}));
+  const bridgePace=boundaryPace[id]??chapterPace[(id+index)%10];
+  const board={...left,id,variant:6,seed:2026111606+id*10,bridgePace,
+   bridgeOffset:chapterOffsets[(id+index)%chapterOffsets.length],introducedType:focus,
+   goals,inventory:types.map(type=>goals.find(g=>g.type===type)??{type,count:3}),
+   title:'收集'+ITEMS[focus].name,source:'原创关卡'};
+  delete board.challengeFinish;
+  if(bridgePace==='挑战')board.challengeFinish=(Math.floor((id+index)/10)+((id+index)%10===4))%2?'two-stacks':'three-stacks';
+  expanded.push(board);
+  variantsByLevel.set(id,[board]);
+  previous=board;
+ }
+}
+LEVELS.splice(0,LEVELS.length,...expanded);
 const levelIndex=new Map(LEVELS.map((level,index)=>[level.id,index]));
 
 export function getLevelVariants(id){const variants=variantsByLevel.get(Number(id));if(variants)return variants;const base=LEVELS[levelIndex.get(Number(id))];if(!base)throw new RangeError(`Unknown level: ${id}`);return [{...base,variant:0}];}

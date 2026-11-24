@@ -1,4 +1,5 @@
-import {LEVELS} from '../../data/levels.mjs?rev=strategy53';
+import {curveOffset} from './curve-offsets.mjs?rev=curve24';
+import {LEVELS} from '../../data/levels.mjs?rev=curve24';
 import {challengeDeals} from './challenge-deals.mjs';
 export function hasChallengeDeal(config){return config.variant===6&&Object.hasOwn(challengeDeals,config.id);}
 export function rng(seed){
@@ -408,7 +409,7 @@ const lateOffsets={
 export function usesLateChallenge(config){
  return config.id>=1000&&config.variant===6&&!hasSampleStacks(config);
 }
-function openingDeal(plan,config,offset,late=false){
+export function openingDeal(plan,config,offset,late=false){
  const id=config.id;
  const pace=id<=9?(id===3||id===7?'缓冲':id===5||id===9?'挑战':'拆堆'):plan.pace;
  const limit=pace==='缓冲'?4:pace==='挑战'?6:5;
@@ -466,7 +467,12 @@ export const strategyOffsets={
  15752:0,16456:1,16626:3,16726:0,16752:6
 };
 export const transitionOffsets={1000:108,1003:12,2000:48,2001:12,2002:64,2003:26};
-export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false){
+export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false,useCurve=true){
+ const prior=previousDeal(config,tuned,useSample,useCadence,useOpening,useLate,originalTransition);
+ const offset=useCurve?curveOffset(config):undefined;
+ return offset===undefined?prior:openingDeal(prior,config,offset,true);
+}
+function previousDeal(config,tuned,useSample,useCadence,useOpening,useLate,originalTransition){
  const plan=standardDesign(config,tuned);
  const paced=useCadence&&usesCadence(config)?pacedDeal(plan,config):plan;
  if(useLate&&usesLateChallenge(config)){

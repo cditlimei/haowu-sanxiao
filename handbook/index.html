@@ -1,12 +1,12 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f3e9"><title>逐关设计手册 · 好物三消</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f6f4eb;color:#263930;font:16px/1.5 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}main{max-width:940px;padding:28px 16px 64px;margin:auto}header{border-bottom:3px solid #234f44;margin-bottom:20px;padding-bottom:18px}header p{margin:0 0 4px;color:#386458;font-weight:650}h1{font-size:clamp(26px,5vw,38px);margin:0;letter-spacing:-.04em}form,nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}form{margin-top:16px}button,input,select,.play{font:inherit;border-radius:9px;border:1px solid #b1bbb1;padding:8px 12px;min-height:44px;background:#fffdf8;color:#243b31}form input{width:8em;max-width:35vw}button,.play,summary{cursor:pointer}button:disabled{opacity:.4;cursor:default}.primary,.play{color:white;background:#225447;border-color:#225447;text-decoration:none;font-weight:650}.play{display:inline-flex;align-items:center}article{background:#fffef9;border:1px solid #d9ded4;border-radius:16px;padding:clamp(14px,3vw,28px)}h2{margin:.2em 0 .45em;font-size:clamp(24px,5vw,32px);line-height:1.25}h3{font-size:17px;margin:19px 0 6px}.eyebrow{font-weight:700;color:#467165}.stats,.items{display:flex;flex-wrap:wrap;gap:6px}.stats span,.items span{display:inline-block;border-radius:6px;padding:4px 9px;background:#eef2e8}.items b{color:#275845;font-variant-numeric:tabular-nums}.goals span{background:#fff0c9}figure{margin:0}figure img{display:block;width:100%;max-width:310px;margin:auto;height:auto;border-radius:12px}.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,30%);gap:24px;margin-top:16px}figcaption{font-size:14px;color:#546359;text-align:center;margin:5px 0}.subtle{color:#546359}details{border-top:1px solid #dbe2d6;margin-top:12px;padding-top:10px}summary{font-weight:650;min-height:40px;padding:6px 0}li{margin:6px 0}nav{margin:16px 0 0}#status:empty{display:none}#status{padding:8px 0;color:#694524}#variant{max-width:100%}p{margin:.5em 0}.route{overflow-wrap:anywhere}:focus-visible{outline:3px solid #197d70;outline-offset:2px}@media(max-width:650px){main{padding:16px 12px 40px}.layout{grid-template-columns:1fr;gap:16px}figure{border-top:1px solid #e1e5db;padding-top:12px}figure img{max-width:min(100%,340px)}}
-</style></head><body><main><header><p>好物三消</p><h1>逐关设计手册</h1>
+.curve{border-collapse:collapse;width:100%;font-size:clamp(12px,3.5vw,15px);text-align:left}.curve th,.curve td{padding:6px 3px;border-bottom:1px solid #dbe2d6}.curve .current{background:#eef2e8;font-weight:650}</style></head><body><main><header><p>好物三消</p><h1>逐关设计手册</h1>
 <form id="lookup"><label for="key">关号</label><input id="key" inputmode="numeric" pattern="[0-9]+" type="text" required maxlength="5" placeholder="1–17899" enterkeyhint="search"><button class="primary">查关</button></form></header>
 <p role="status" id="status"></p><article id="card" hidden></article></main>
 <script>
 'use strict';
-const max=17899,blockSize=20,version='a09f0c96992d-fe6b894716',rev='a09f0c96992d';
+const max=17899,blockSize=20,version='a09f0c96992d-9b10f018d9',rev='a09f0c96992d';
 const game='https://cditlimei.github.io/haowu-sanxiao/',card=document.querySelector('#card'),key=document.querySelector('#key'),statusNode=document.querySelector('#status');
 const cache=new Map();let sequence=0;
 function node(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n}
@@ -23,6 +23,17 @@ function render(id,record,group){
  const metrics=node('div');metrics.className='stats';for(const x of [r.pace,r.seconds+' 秒',r.total+' 件','最高占槽 '+r.peak+'/'+r.cap])metrics.append(node('span',x));section(info,'难度',metrics);
  if(r.intent)info.append(node('p',r.intent));
  info.append(node('p','参考解共 '+r.route.length+' 步，第 '+r.first+' 步首次消除。'));
+ if(r.main&&group.adjacent){
+  const table=node('table');table.className='curve';
+  const head=table.createTHead().insertRow();
+  for(const title of ['关号','节奏','首次消除','最高占槽','模拟胜局'])head.append(node('th',title));
+  const body=table.createTBody();
+  for(const [n,pace,first,peak,wins] of group.adjacent){
+   const tr=body.insertRow();if(n===id)tr.className='current';
+   for(const value of [n,pace,first+'步',peak+'格',wins===null?'—':wins+'/32'])tr.insertCell().textContent=value;
+  }
+  section(info,'相邻关难度',table);
+ }
  function inventory(title,items,klass){const box=node('div');box.className='items '+klass;for(const [i,n] of items){const chip=node('span',name(i)+' ');chip.append(node('b','×'+n));box.append(chip)}section(info,title,box)}
  inventory('收集目标',r.goals,'goals');inventory('盘面物件',r.inv,'');
  const fig=node('figure');layout.append(fig);
@@ -42,7 +53,11 @@ async function load(){
  if(!/^\d+$/.test(raw)||id<1||id>max){statusNode.textContent='请输入 1 至 '+max+' 之间的关号。';return}
  statusNode.textContent='正在读取第 '+id+' 关…';
  try{const index=Math.floor((id-1)/blockSize);let chunk=cache.get(index);
- if(!chunk){const res=await fetch('data/'+version+'/'+index+'.json');if(!res.ok)throw Error();chunk=await res.json();if(cache.size>=6)cache.delete(cache.keys().next().value);cache.set(index,chunk)}
+ if(!chunk){const res=await fetch('data/'+version+'/'+index+'.json');if(res.status===404&&token===sequence){
+   const fresh=new URL(location.href);
+   if(fresh.searchParams.get('refresh')!==version){fresh.searchParams.set('refresh',version);location.replace(fresh.href);return}
+  }
+  if(!res.ok)throw Error();chunk=await res.json();if(cache.size>=6)cache.delete(cache.keys().next().value);cache.set(index,chunk)}
  if(token!==sequence)return;
  const group=chunk[id],v=params.get('variant'),rec=v===null?group.records.find(r=>r.main):group.records.find(r=>String(r.v)===v);
  if(!rec){statusNode.replaceChildren(node('p','本关没有此配置。'),button('查看默认盘面',()=>gotoLevel(id)));return}

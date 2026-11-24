@@ -1,4 +1,4 @@
-import {LEVELS} from '../../data/levels.mjs?rev=campaign-a09f0c96992d';
+import {LEVELS} from '../../data/levels.mjs?rev=strategy53';
 import {challengeDeals} from './challenge-deals.mjs';
 export function hasChallengeDeal(config){return config.variant===6&&Object.hasOwn(challengeDeals,config.id);}
 export function rng(seed){
@@ -456,12 +456,22 @@ function openingDeal(plan,config,offset,late=false){
  return {...plan,pace,piles:piles.map(s=>s.reverse()),route};
 }
 // Revised transition deals. Existing saves keep the original late-game layout.
+export const strategyOffsets={
+ 3305:34,3525:8,3995:3,4288:5,4864:3,6257:20,6321:0,6664:8,
+ 7214:9,7464:10,7514:27,7681:0,7944:0,8224:4,8267:1,8424:9,
+ 8824:4,9867:26,9881:33,10361:1,10481:23,10504:37,10961:7,10984:9,
+ 11001:20,11324:2,11344:1,11574:4,11747:14,11881:9,12094:35,12681:3,
+ 12864:6,12987:41,13144:6,13678:8,13712:27,13816:16,13876:9,13960:29,
+ 14208:5,14231:3,14408:14,14752:11,14832:28,15072:2,15569:2,15672:23,
+ 15752:0,16456:1,16626:3,16726:0,16752:6
+};
 export const transitionOffsets={1000:108,1003:12,2000:48,2001:12,2002:64,2003:26};
 export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false){
  const plan=standardDesign(config,tuned);
  const paced=useCadence&&usesCadence(config)?pacedDeal(plan,config):plan;
  if(useLate&&usesLateChallenge(config)){
-  const offset=config.bridgeOffset??(originalTransition?lateOffsets[config.id]:transitionOffsets[config.id]??lateOffsets[config.id]);
+  const revisedOffset=originalTransition?undefined:strategyOffsets[config.id];
+  const offset=revisedOffset??config.bridgeOffset??(originalTransition?lateOffsets[config.id]:transitionOffsets[config.id]??lateOffsets[config.id]);
   const deal=config.id===2001&&!originalTransition?{...paced,pace:'缓冲'}:paced;
   return openingDeal(deal,config,offset,true);
  }

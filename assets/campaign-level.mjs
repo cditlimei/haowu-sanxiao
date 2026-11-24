@@ -1,6 +1,6 @@
-import {getLevel} from '../data/levels.mjs?rev=campaign-a09f0c96992d';
+import {getLevel} from '../data/levels.mjs?rev=strategy53';
 import {createState} from '../rules.mjs';
-import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets} from './level-workshop/design.mjs?rev=campaign-a09f0c96992d';
+import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets,strategyOffsets} from './level-workshop/design.mjs?rev=strategy53';
 
 const compiled=new WeakMap();
 export function campaignConfig(level,variant,savedSeed){
@@ -18,7 +18,7 @@ export function campaignConfig(level,variant,savedSeed){
  const openingSeed=base.seed+35005000;
  const useOpening=opening&&(savedSeed===undefined||savedSeed===openingSeed);
  const late=usesLateChallenge(base);
- const revised=late&&Object.hasOwn(transitionOffsets,level);
+ const revised=late&&(Object.hasOwn(transitionOffsets,level)||Object.hasOwn(strategyOffsets,level));
  const previousLateSeed=base.seed+35006000;
  const originalTransition=revised&&savedSeed===previousLateSeed;
  const lateSeed=revised&&!originalTransition?base.seed+35007000:previousLateSeed;

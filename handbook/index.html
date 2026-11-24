@@ -1,0 +1,53 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f3e9"><title>逐关设计手册 · 好物三消</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f4eb;color:#263930;font:16px/1.5 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}main{max-width:940px;padding:28px 16px 64px;margin:auto}header{border-bottom:3px solid #234f44;margin-bottom:20px;padding-bottom:18px}header p{margin:0 0 4px;color:#386458;font-weight:650}h1{font-size:clamp(26px,5vw,38px);margin:0;letter-spacing:-.04em}form,nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}form{margin-top:16px}button,input,select,.play{font:inherit;border-radius:9px;border:1px solid #b1bbb1;padding:8px 12px;min-height:44px;background:#fffdf8;color:#243b31}form input{width:8em;max-width:35vw}button,.play,summary{cursor:pointer}button:disabled{opacity:.4;cursor:default}.primary,.play{color:white;background:#225447;border-color:#225447;text-decoration:none;font-weight:650}.play{display:inline-flex;align-items:center}article{background:#fffef9;border:1px solid #d9ded4;border-radius:16px;padding:clamp(14px,3vw,28px)}h2{margin:.2em 0 .45em;font-size:clamp(24px,5vw,32px);line-height:1.25}h3{font-size:17px;margin:19px 0 6px}.eyebrow{font-weight:700;color:#467165}.stats,.items{display:flex;flex-wrap:wrap;gap:6px}.stats span,.items span{display:inline-block;border-radius:6px;padding:4px 9px;background:#eef2e8}.items b{color:#275845;font-variant-numeric:tabular-nums}.goals span{background:#fff0c9}figure{margin:0}figure img{display:block;width:100%;max-width:310px;margin:auto;height:auto;border-radius:12px}.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,30%);gap:24px;margin-top:16px}figcaption{font-size:14px;color:#546359;text-align:center;margin:5px 0}.subtle{color:#546359}details{border-top:1px solid #dbe2d6;margin-top:12px;padding-top:10px}summary{font-weight:650;min-height:40px;padding:6px 0}li{margin:6px 0}nav{margin:16px 0 0}#status:empty{display:none}#status{padding:8px 0;color:#694524}#variant{max-width:100%}p{margin:.5em 0}.route{overflow-wrap:anywhere}:focus-visible{outline:3px solid #197d70;outline-offset:2px}@media(max-width:650px){main{padding:16px 12px 40px}.layout{grid-template-columns:1fr;gap:16px}figure{border-top:1px solid #e1e5db;padding-top:12px}figure img{max-width:min(100%,340px)}}
+</style></head><body><main><header><p>好物三消</p><h1>逐关设计手册</h1>
+<form id="lookup"><label for="key">关号</label><input id="key" inputmode="numeric" pattern="[0-9]+" type="text" required maxlength="5" placeholder="1–17899" enterkeyhint="search"><button class="primary">查关</button></form></header>
+<p role="status" id="status"></p><article id="card" hidden></article></main>
+<script>
+'use strict';
+const max=17899,blockSize=20,version='a09f0c96992d-9a1810595b',rev='a09f0c96992d';
+const game='https://cditlimei.github.io/haowu-sanxiao/',card=document.querySelector('#card'),key=document.querySelector('#key'),statusNode=document.querySelector('#status');
+const cache=new Map();let sequence=0;
+function node(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n}
+function button(text,action){const b=node('button',text);b.type='button';b.onclick=action;return b}
+function section(target,title,content){target.append(node('h3',title),content)}
+function gotoLevel(id,v){const u=new URL(location.href);u.searchParams.set('level',id);if(v===undefined)u.searchParams.delete('variant');else u.searchParams.set('variant',v);if(u.href!==location.href)history.pushState(null,'',u);load()}
+function render(id,record,group){
+ const r=record,name=i=>r.visual[i]??group.names[i],top=node('div','第 '+id+' 关');top.className='eyebrow';
+ card.replaceChildren(top,node('h2',r.title));const nav=node('nav');
+ const prev=button('上一关',()=>gotoLevel(id-1)),next=button('下一关',()=>gotoLevel(id+1));prev.disabled=id<=1;next.disabled=id>=max;
+ const play=node('a','试玩第 '+id+' 关');play.className='play';play.href=game+'?level='+id+(r.main?'':'&variant='+r.v);nav.append(play,prev,next);card.append(nav);
+ if(group.records.length>1){const label=node('label','盘面配置 '),sel=node('select');sel.id='variant';for(const x of group.records)sel.add(new Option((x.main?'默认主线':'备选配置')+' · '+x.v,x.v));sel.value=r.v;sel.onchange=()=>gotoLevel(id,Number(sel.value));label.append(sel);const row=node('p');row.append(label);card.append(row)}
+ const layout=node('div');layout.className='layout';const info=node('div');layout.append(info);card.append(layout);
+ const metrics=node('div');metrics.className='stats';for(const x of [r.pace,r.seconds+' 秒',r.total+' 件','最高占槽 '+r.peak+'/'+r.cap])metrics.append(node('span',x));section(info,'难度',metrics);
+ if(r.intent)info.append(node('p',r.intent));
+ info.append(node('p','参考解共 '+r.route.length+' 步，第 '+r.first+' 步首次消除。'));
+ function inventory(title,items,klass){const box=node('div');box.className='items '+klass;for(const [i,n] of items){const chip=node('span',name(i)+' ');chip.append(node('b','×'+n));box.append(chip)}section(info,title,box)}
+ inventory('收集目标',r.goals,'goals');inventory('盘面物件',r.inv,'');
+ const fig=node('figure');layout.append(fig);
+ if(r.main){const file=id+'-'+r.v+'-'+r.seed+'.webp';const url='shots/'+rev+'/'+Math.floor((id-1)/200)+'/'+file;
+ const a=node('a');a.href=url;a.setAttribute('aria-label','查看第 '+id+' 关开局原图');const img=node('img');img.width=390;img.height=844;img.alt='第 '+id+' 关手机开局实跑图';a.append(img);const cap=node('figcaption','开局实跑 · 390 × 844');img.onerror=()=>{cap.textContent='截图加载失败，点此打开原图。'};fig.append(a,cap);img.src=url;
+ }else{fig.append(node('figcaption','此备选配置尚无实跑截图。'))}
+ function more(title,content){const d=node('details');d.append(node('summary',title),content);card.append(d)}
+ const detail=node('div');detail.append(node('p',r.piles.length?'开局可直接凑三：'+(r.ready.map(name).join('、')||'无'):'自由取物盘面。'));
+ if(r.wins!==null)detail.append(node('p','固定策略模拟通关 '+r.wins+' / 32 次。'));
+ const tools=[['hint','吸尘器',3],['undo','撤回',5],['shuffle','重排',7],['freeze','冰冻',9]].map(([k,n,l])=>n+' '+(id<l?'未解锁':(r.boost[k]??0)+' 次'));if(r.boost.star)tools.push('连消星 '+r.boost.star+' 次，先消 '+r.star+' 组');detail.append(node('p',tools.join(' · ')),node('p','种子 '+r.seed));more('难度指标与道具',detail);
+ if(r.piles.length){const ol=node('ol');for(const p of r.piles)ol.append(node('li',p.map(name).join(' → ')));more('逐堆物件（从底到顶）',ol)}
+ const route=node('p',r.route.join(' → '));route.className='route';more(r.piles.length?'无道具解（堆号）':'无道具解（实例编号）',route);
+ card.hidden=false;document.title='第 '+id+' 关 · 好物三消逐关手册';
+}
+async function load(){
+ const token=++sequence,params=new URLSearchParams(location.search),raw=params.get('level')??'1',id=Number(raw);key.value=raw;card.hidden=true;statusNode.replaceChildren();
+ if(!/^\d+$/.test(raw)||id<1||id>max){statusNode.textContent='请输入 1 至 '+max+' 之间的关号。';return}
+ statusNode.textContent='正在读取第 '+id+' 关…';
+ try{const index=Math.floor((id-1)/blockSize);let chunk=cache.get(index);
+ if(!chunk){const res=await fetch('data/'+version+'/'+index+'.json');if(!res.ok)throw Error();chunk=await res.json();if(cache.size>=6)cache.delete(cache.keys().next().value);cache.set(index,chunk)}
+ if(token!==sequence)return;
+ const group=chunk[id],v=params.get('variant'),rec=v===null?group.records.find(r=>r.main):group.records.find(r=>String(r.v)===v);
+ if(!rec){statusNode.replaceChildren(node('p','本关没有此配置。'),button('查看默认盘面',()=>gotoLevel(id)));return}
+ render(id,rec,group);statusNode.textContent='';
+ }catch(e){if(token===sequence)statusNode.replaceChildren(node('p','关卡资料暂时未能载入。'),button('重试',load))}
+}
+document.querySelector('#lookup').onsubmit=e=>{e.preventDefault();gotoLevel(key.value.trim());key.blur()};window.addEventListener('popstate',load);load();
+</script></body></html>

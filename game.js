@@ -1,4 +1,4 @@
-import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=curve24';
+import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=opening25';
 import {availableHeads} from './assets/stack-order.mjs';
 import {variantLooks,variantAppearances} from './assets/real-surfaces/variant-looks.mjs';
 import {prepareIndividualAtlas,releaseIndividualAtlases} from './assets/real-surfaces/individual-finish.mjs';
@@ -21,7 +21,7 @@ import {createPileInstances} from './instance-pile.mjs';
 import {tripoAssetStatus} from './tripo-assets.mjs';
 import {buildPile,settlePile} from './pile-layout.mjs';
 import {make,referenceTexturesReady,releaseReferenceTextures,hasSolidModel} from './models.mjs';
-import {LEVELS,ITEMS,nextLevelId,getLevelVariants,sequenceAssetLevel} from './data/levels.mjs?rev=curve24';
+import {LEVELS,ITEMS,nextLevelId,getLevelVariants,sequenceAssetLevel} from './data/levels.mjs?rev=opening25';
 import * as THREE from './node_modules/three/build/three.module.js';
 import {createState,pick,undo,vacuum,clearStarStack,tick,settledGoalRemaining} from './rules.mjs';
 import {hasSewnVolleyball,hasMantelClock,hasRotaryTelephone,hasArcadeCabinet,hasCampingMatchbox,solidItemSphereRadius,solidItemDisplayName,solidItemTexturesReady,localizedObjectName} from './solid-items.mjs';
@@ -1251,7 +1251,14 @@ async function start(l=1,variant){
  }
 }
 
+const openingTips=new Map([
+ [15011,{seed:2061269716,text:'先收堆顶的三只可颂'}],
+ [15012,{seed:2061269726,text:'留一个槽位，看看蓝椅子下面'}],
+ [15013,{seed:2061270736,text:'先收吐司，再找露出的煎蛋'}],
+]);
 function showLevelTip(){
+ const tip=openingTips.get(state.level);
+ if(tip?.seed===state.config.seed&&state.config.variant===6){toast(tip.text);return;}
  if(state.config.layout?.chainStacks)toast(state.config.boosters.star?'先取堆顶，消 '+(state.config.layout.starAfter??2)+' 组可用连消':'先取堆顶，三个同款消一组');
  else if(state.level===2)toast(state.config.variant===0?'收齐橘子就能过关':'收齐小鸭和草莓，每三件消一组');
  else if(state.level===3)toast('吸尘器已解锁，可收走一组目标');

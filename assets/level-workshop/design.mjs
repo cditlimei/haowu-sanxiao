@@ -1,5 +1,5 @@
-import {curveOffset} from './curve-offsets.mjs?rev=curve24';
-import {LEVELS} from '../../data/levels.mjs?rev=curve24';
+import {curveOffset} from './curve-offsets.mjs?rev=opening25';
+import {LEVELS} from '../../data/levels.mjs?rev=opening25';
 import {challengeDeals} from './challenge-deals.mjs';
 export function hasChallengeDeal(config){return config.variant===6&&Object.hasOwn(challengeDeals,config.id);}
 export function rng(seed){
@@ -467,8 +467,20 @@ export const strategyOffsets={
  15752:0,16456:1,16626:3,16726:0,16752:6
 };
 export const transitionOffsets={1000:108,1003:12,2000:48,2001:12,2002:64,2003:26};
-export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false,useCurve=true){
+export function hasTwoGoalOpening(config){
+ return config.id===15013&&config.variant===6;
+}
+export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false,useCurve=true,useTwoGoalOpening=true){
  const prior=previousDeal(config,tuned,useSample,useCadence,useOpening,useLate,originalTransition);
+ if(useCurve&&useTwoGoalOpening&&hasTwoGoalOpening(config)){
+  const deal=openingDeal(prior,config,162,true);
+  // After the opening toast triple, take the three exposed fried eggs.
+  // Preserve the lane order of the remaining certified route.
+  const rest=deal.route.slice(3);
+  const eggs=[0,1,4];
+  for(const lane of eggs)rest.splice(rest.indexOf(lane),1);
+  return {...deal,route:[...deal.route.slice(0,3),...eggs,...rest]};
+ }
  const offset=useCurve?curveOffset(config):undefined;
  return offset===undefined?prior:openingDeal(prior,config,offset,true);
 }

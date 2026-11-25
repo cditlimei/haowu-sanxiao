@@ -1,14 +1,17 @@
-import {curveOffset} from './level-workshop/curve-offsets.mjs?rev=curve24';
-import {getLevel} from '../data/levels.mjs?rev=curve24';
+import {curveOffset} from './level-workshop/curve-offsets.mjs?rev=opening25';
+import {getLevel} from '../data/levels.mjs?rev=opening25';
 import {createState} from '../rules.mjs';
-import {design,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets,strategyOffsets} from './level-workshop/design.mjs?rev=curve24';
+import {design,hasTwoGoalOpening,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets,strategyOffsets} from './level-workshop/design.mjs?rev=opening25';
 
 const compiled=new WeakMap();
 export function campaignConfig(level,variant,savedSeed){
  const base=getLevel(level,variant);
  if(level<=2||base.layout?.chainStacks||base.layout?.spreadTriples)return base;
  const hasCurve=curveOffset(base)!==undefined;
- const curveSeed=base.seed+35008000;
+ const previousCurveSeed=base.seed+35008000;
+ const revisedOpening=hasTwoGoalOpening(base);
+ const legacyOpening=revisedOpening&&savedSeed===previousCurveSeed;
+ const curveSeed=revisedOpening&&!legacyOpening?base.seed+35009000:previousCurveSeed;
  const useCurve=hasCurve&&(savedSeed===undefined||savedSeed===curveSeed);
  // A resumed curve deal uses the same baseline as a fresh deal.
  const baselineSeed=useCurve?undefined:savedSeed;
@@ -30,9 +33,9 @@ export function campaignConfig(level,variant,savedSeed){
  const lateSeed=revised&&!originalTransition?base.seed+35007000:previousLateSeed;
  const useLate=late&&(baselineSeed===undefined||baselineSeed===lateSeed);
  const useCadence=cadence&&(baselineSeed===undefined||baselineSeed===cadenceSeed||useOpening||useLate);
- const cacheable=(!hasCurve||useCurve)&&!originalTransition&&(!late||useLate)&&(!opening||useOpening)&&(!cadence||useCadence)&&!historical&&(!sample||useSample);
+ const cacheable=!legacyOpening&&(!hasCurve||useCurve)&&!originalTransition&&(!late||useLate)&&(!opening||useOpening)&&(!cadence||useCadence)&&!historical&&(!sample||useSample);
  if(cacheable&&compiled.has(base))return compiled.get(base);
- const plan=design(base,!historical,useSample,useCadence,useOpening,useLate,originalTransition,useCurve);
+ const plan=design(base,!historical,useSample,useCadence,useOpening,useLate,originalTransition,useCurve,!legacyOpening);
  const piles=plan.piles;
  const counts=new Map();
  for(const type of piles.flat())counts.set(type,(counts.get(type)??0)+1);

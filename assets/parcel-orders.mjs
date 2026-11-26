@@ -1,4 +1,4 @@
-import {chapterParcels} from './parcel-chapters.mjs';
+import {chapterParcels} from './parcel-chapters.mjs?rev=parcel-rhythm1';
 
 // Slots in each rule: pile, loose items above the package, seal type.
 // Opening moves are verified in the game and reused by the editor and handbook.

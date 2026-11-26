@@ -1,4 +1,4 @@
-import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=parcel-chapters1';
+import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=parcel-rhythm1';
 import {parcelView} from './assets/parcel-view.mjs';
 import {availableHeads} from './assets/stack-order.mjs?rev=parcel26';
 import {variantLooks,variantAppearances} from './assets/real-surfaces/variant-looks.mjs';

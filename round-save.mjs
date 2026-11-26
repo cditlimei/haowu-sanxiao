@@ -1,4 +1,4 @@
-import {createState} from './rules.mjs';
+import {createState} from './rules.mjs?rev=parcel26';
 import {typeId} from './data/levels.mjs';
 
 const legacyRoundItems={
@@ -91,6 +91,7 @@ function remapKitchenRound(saved,config){
 
 export function captureRound(state,boardOrder){
  return {
+  ...(state.config.layout?.parcels?{parcelEdition:1}:{}),
   version:1,level:state.level,variant:state.config.variant,seed:state.config.seed,
   goals:state.goals,boardOrder,itemOrder:state.items.map(item=>item.id),tray:state.tray.map(item=>item.id),
   collected:state.collected.flatMap((count,type)=>count?[[type,count]]:[]),
@@ -105,6 +106,10 @@ export function restoreRound(saved,level,variant,makeState=createState){
   saved={...saved,variant:0};
  }
  if(saved?.version!==1||saved.level!==level||saved.variant!==config.variant||saved.seed!==config.seed)return null;
+ if(config.layout?.parcels&&!saved.parcelEdition){
+  const {parcels,...layout}=config.layout;
+  state.config={...config,layout};
+ }
  if(JSON.stringify(saved.goals)!==JSON.stringify(state.goals)){
   saved=level===1?remapKitchenRound(saved,config):remapLegacyRound(saved,config);
   if(!saved)return null;
@@ -131,7 +136,7 @@ export function restoreRound(saved,level,variant,makeState=createState){
   countByType.delete(type);
  }
  if([...countByType.values()].some(count=>count!==0)
-   ||state.goals.every(goal=>state.collected[goal.type]>=goal.count))return null;
+   ||state.goals.every(goal=>state.collected[goal.type]>=goal.count)&&!state.config.layout?.parcels?.some(p=>state.collected[p.type]<3))return null;
 
  const tray=saved.tray.map(id=>items[id]);
  if(tray.some(item=>tray.filter(other=>other.type===item.type).length>=3))return null;

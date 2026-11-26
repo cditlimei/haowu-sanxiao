@@ -6,7 +6,7 @@
 <p role="status" id="status"></p><article id="card" hidden></article></main>
 <script>
 'use strict';
-const max=17899,blockSize=20,version='a09f0c96992d-bb9be9d242',rev='a09f0c96992d';
+const max=17899,blockSize=20,version='a09f0c96992d-967398cfca',rev='a09f0c96992d';
 const game='https://cditlimei.github.io/haowu-sanxiao/',card=document.querySelector('#card'),key=document.querySelector('#key'),statusNode=document.querySelector('#status');
 const cache=new Map();let sequence=0;
 function node(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n}
@@ -37,7 +37,7 @@ function render(id,record,group){
  function inventory(title,items,klass){const box=node('div');box.className='items '+klass;for(const [i,n] of items){const chip=node('span',name(i)+' ');chip.append(node('b','×'+n));box.append(chip)}section(info,title,box)}
  inventory('收集目标',r.goals,'goals');inventory('盘面物件',r.inv,'');
  const fig=node('figure');layout.append(fig);
- if(r.main){const file=id+'-'+r.v+'-'+r.seed+'.webp';const url='shots/'+rev+'/'+Math.floor((id-1)/200)+'/'+file;
+ if(r.main){const file=id+'-'+r.v+'-'+r.seed+'.webp';const url='shots/'+rev+'/'+Math.floor((id-1)/200)+'/'+file+'?v='+version;
  const a=node('a');a.href=url;a.setAttribute('aria-label','查看第 '+id+' 关开局原图');const img=node('img');img.width=390;img.height=844;img.alt='第 '+id+' 关手机开局实跑图';a.append(img);const cap=node('figcaption','开局实跑 · 390 × 844');img.onerror=()=>{cap.textContent='截图加载失败，点此打开原图。'};fig.append(a,cap);img.src=url;
  }else{fig.append(node('figcaption','此备选配置尚无实跑截图。'))}
  function more(title,content){const d=node('details');d.append(node('summary',title),content);card.append(d)}

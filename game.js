@@ -1,5 +1,6 @@
-import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=opening25';
-import {availableHeads} from './assets/stack-order.mjs';
+import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=parcel26';
+import {parcelView} from './assets/parcel-view.mjs';
+import {availableHeads} from './assets/stack-order.mjs?rev=parcel26';
 import {variantLooks,variantAppearances} from './assets/real-surfaces/variant-looks.mjs';
 import {prepareIndividualAtlas,releaseIndividualAtlases} from './assets/real-surfaces/individual-finish.mjs';
 import {prepareSurfaces,photographedAsset,realFinish} from './assets/real-surfaces/materials.mjs';
@@ -8,7 +9,7 @@ import {preparePanel} from './assets/glazed-objects/crystal-board.mjs';
 import {detailEssentialsKind,makeDetailEssentials} from './assets/glazed-objects/detail-essentials.mjs';
 import {denseRebuildKind,counterRebuildKind,familyRebuildKind,playroomRebuildKind,makePlayroomRebuild} from './assets/glazed-objects/playroom-rebuild.mjs';
 import {kitchenRebuildKind,makeKitchenRebuild} from './assets/glazed-objects/kitchen-rebuild.mjs';
-import {captureRound,restoreRound} from './round-save.mjs';
+import {captureRound,restoreRound} from './round-save.mjs?rev=parcel26';
 import {renderTools} from './lime-tools.mjs';
 import {referenceTableLayout,referenceVisuals} from './assets/glazed-objects/reference-visuals.mjs';
 import {sportRebuildKind,makeSportRebuild} from './assets/glazed-objects/sport-rebuild.mjs';
@@ -19,11 +20,11 @@ import {prepareHouseholdAssets,householdAssetStatus,householdAssetTag,householdA
 import {createCollisionPile} from './pile-collision.mjs';
 import {createPileInstances} from './instance-pile.mjs';
 import {tripoAssetStatus} from './tripo-assets.mjs';
-import {buildPile,settlePile} from './pile-layout.mjs';
+import {buildPile,settlePile} from './pile-layout.mjs?rev=parcel26';
 import {make,referenceTexturesReady,releaseReferenceTextures,hasSolidModel} from './models.mjs';
 import {LEVELS,ITEMS,nextLevelId,getLevelVariants,sequenceAssetLevel} from './data/levels.mjs?rev=opening25';
 import * as THREE from './node_modules/three/build/three.module.js';
-import {createState,pick,undo,vacuum,clearStarStack,tick,settledGoalRemaining} from './rules.mjs';
+import {createState,pick,undo,vacuum,clearStarStack,tick,settledGoalRemaining} from './rules.mjs?rev=parcel26';
 import {hasSewnVolleyball,hasMantelClock,hasRotaryTelephone,hasArcadeCabinet,hasCampingMatchbox,solidItemSphereRadius,solidItemDisplayName,solidItemTexturesReady,localizedObjectName} from './solid-items.mjs';
 renderTools();
 let renderDirty=true;
@@ -298,6 +299,7 @@ function boardItemIcon(type){
  }
  return localizedIcons.get(key);
 }
+const parcels=parcelView($('playfield'),boardItemIcon,boardItemName,toast,boardPoint);
 const pileInstances=createPileInstances(scene);
 let halfH=5,pile=null,pileKey=null,boardZoom=1,pan={x:0,y:0};
 let contactPile=null,drop=null,lastDrop=null,contactMoving=false,contactImpacts=0;
@@ -948,6 +950,7 @@ function update(){
  updateGoals();
  updateTray();
  updateStarterGuide();
+ parcels.refresh(state);
  $('capacity').textContent=`收纳槽 ${state.tray.length} / 7`;
  for(const [key,unlock] of Object.entries({hint:3,undo:5,shuffle:7,freeze:9})){
   const button=$(key), locked=state.level<unlock;
@@ -1257,6 +1260,12 @@ const openingTips=new Map([
  [15013,{seed:2061270736,text:'先收吐司，再找露出的煎蛋'}],
 ]);
 function showLevelTip(){
+ const orders=state.config.layout?.parcels;
+ if(orders){
+  const names=orders.map(p=>boardItemName(p.type));
+  const tip=names.length===1?'收齐三个'+names[0]+'，拆开图签包裹':state.level===15012?names.join('、')+'各拆一包，先后由你选':'先收'+names[0]+'，再收'+names[1]+'拆第二包';
+  toast(tip);return;
+ }
  const tip=openingTips.get(state.level);
  if(tip?.seed===state.config.seed&&state.config.variant===6){toast(tip.text);return;}
  if(state.config.layout?.chainStacks)toast(state.config.boosters.star?'先取堆顶，消 '+(state.config.layout.starAfter??2)+' 组可用连消':'先取堆顶，三个同款消一组');
@@ -1297,6 +1306,9 @@ async function prepareRoundAssets(){
 function resume(){
  savedRound=null;
  state.status='playing';
+ renderDirty=true;
+ parcels.refresh(state);
+ parcels.position(state,groups);
  lastTime=performance.now();
  $('modal').hidden=true;
  updateStarterGuide();
@@ -1517,7 +1529,7 @@ $('level-next').onclick=()=>{levelPage++;renderLevelList();};
 $('level-menu').addEventListener('keydown',event=>{
  if(event.key==='Escape')closeLevels();
 });
-function frame(now){if(now<recordUntil)renderDirty=true;if(benchmarkUntil&&now>=benchmarkUntil){benchmarkReport={level:state.level,frameSamples:frameTimes.length,frameMedianMs:percentile(frameTimes,.5),frameP95Ms:percentile(frameTimes,.95),renderSubmitP95Ms:percentile(renderTimes,.95),viewport:[innerWidth,innerHeight],active:[...groups.values()].filter(g=>g.userData.tripo).length};benchmarkUntil=0;}const dt=(now-lastTime)/1000;lastTime=now;if(dt>0&&dt<1){frameTimes.push(dt*1000);if(frameTimes.length>300)frameTimes.shift();}if(now<benchmarkUntil){renderDirty=true;scene.rotation.z=Math.sin(now*.002)*.025;}else if(scene.rotation.z!==0){scene.rotation.z=0;renderDirty=true;}const prev=state.status;tick(state,dt);advanceContacts(dt);if(prev==='playing'&&state.status==='timeout'){clearRound();showResult();}if(state.status==='playing'&&now-lastCheckpoint>=3000)saveRound();updateTimer();for(const g of groups.values()){if(!contactPile&&g.userData.target&&g.position.distanceToSquared(g.userData.target)>0.000001){g.position.lerp(g.userData.target,.14);renderDirty=true;}}if(renderDirty){const renderStart=performance.now();pileInstances.sync();syncChainButtons();renderer.render(scene,camera);renderTimes.push(performance.now()-renderStart);if(renderTimes.length>300)renderTimes.shift();drawTotal++;renderDirty=false;}requestAnimationFrame(frame);}
+function frame(now){if(now<recordUntil)renderDirty=true;if(benchmarkUntil&&now>=benchmarkUntil){benchmarkReport={level:state.level,frameSamples:frameTimes.length,frameMedianMs:percentile(frameTimes,.5),frameP95Ms:percentile(frameTimes,.95),renderSubmitP95Ms:percentile(renderTimes,.95),viewport:[innerWidth,innerHeight],active:[...groups.values()].filter(g=>g.userData.tripo).length};benchmarkUntil=0;}const dt=(now-lastTime)/1000;lastTime=now;if(dt>0&&dt<1){frameTimes.push(dt*1000);if(frameTimes.length>300)frameTimes.shift();}if(now<benchmarkUntil){renderDirty=true;scene.rotation.z=Math.sin(now*.002)*.025;}else if(scene.rotation.z!==0){scene.rotation.z=0;renderDirty=true;}const prev=state.status;tick(state,dt);advanceContacts(dt);if(prev==='playing'&&state.status==='timeout'){clearRound();showResult();}if(state.status==='playing'&&now-lastCheckpoint>=3000)saveRound();updateTimer();for(const g of groups.values()){if(!contactPile&&g.userData.target&&g.position.distanceToSquared(g.userData.target)>0.000001){g.position.lerp(g.userData.target,.14);renderDirty=true;}}if(renderDirty){parcels.position(state,groups);const renderStart=performance.now();pileInstances.sync();syncChainButtons();renderer.render(scene,camera);renderTimes.push(performance.now()-renderStart);if(renderTimes.length>300)renderTimes.shift();drawTotal++;renderDirty=false;}requestAnimationFrame(frame);}
 $('secondary').disabled=true;
 await prepareRoundAssets();
 localizedIcons.clear();

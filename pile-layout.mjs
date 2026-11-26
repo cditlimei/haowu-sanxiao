@@ -1,4 +1,4 @@
-import {stackOrder} from './assets/stack-order.mjs';
+import {stackOrder} from './assets/stack-order.mjs?rev=parcel26';
 import {level94Layout} from './level-94-layout.mjs';
 import {level56Layout} from './level-56-layout.mjs';
 import {level499Layout} from './level-499-layout.mjs';

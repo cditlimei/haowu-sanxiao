@@ -1,7 +1,9 @@
 import {curveOffset} from './level-workshop/curve-offsets.mjs?rev=opening25';
 import {getLevel} from '../data/levels.mjs?rev=opening25';
-import {createState} from '../rules.mjs';
+import {createState} from '../rules.mjs?rev=parcel26';
 import {design,hasTwoGoalOpening,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets,strategyOffsets} from './level-workshop/design.mjs?rev=opening25';
+
+import {parcelLayout} from './parcel-orders.mjs';
 
 const compiled=new WeakMap();
 export function campaignConfig(level,variant,savedSeed){
@@ -43,9 +45,10 @@ export function campaignConfig(level,variant,savedSeed){
  let id=0;
  const ids=new Map(inventory.map(({type,count})=>[type,Array.from({length:count},()=>id++)]));
  const fans=piles.map(pile=>pile.map(type=>ids.get(type).pop()));
- const config={...base,seed:useCurve?curveSeed:useLate?lateSeed:useOpening?openingSeed:useCadence?cadenceSeed:useSample?sampleSeed:tuned?base.seed+35002000:oldSeed,inventory,
+ const seed=useCurve?curveSeed:useLate?lateSeed:useOpening?openingSeed:useCadence?cadenceSeed:useSample?sampleSeed:tuned?base.seed+35002000:oldSeed;
+ const config={...base,seed,inventory,
   goals:plan.goals,boosters:{...base.boosters,star:plan.starAfter?1:0},
-  layout:{...base.layout,aspect:.675,bounds:[.035,.08,.965,.89],fans,chainStacks:true,starAfter:plan.starAfter},
+  layout:{...base.layout,aspect:.675,bounds:[.035,.08,.965,.89],fans,...parcelLayout(level,base.variant,seed,fans),chainStacks:true,starAfter:plan.starAfter},
   accuracy:plan.pace+' · 分层拆堆',notes:'点取各堆最上方的物件，凑齐三个同款。'};
  if(cacheable)compiled.set(base,config);
  return config;

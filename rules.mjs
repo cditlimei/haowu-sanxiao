@@ -1,5 +1,7 @@
-import {availableHeads} from './assets/stack-order.mjs';
+import {availableHeads} from './assets/stack-order.mjs?rev=parcel26';
 import {getLevel,ITEMS} from './data/levels.mjs';
+import {closedParcels,sealedIds} from './assets/parcel-orders.mjs';
+function complete(s){return s.goals.every(g=>s.collected[g.type]>=g.count)&&!closedParcels(s).length;}
 export function createState(level=1,variant,config=getLevel(level,variant)){
  let id=0;const items=config.inventory.flatMap(({type,count})=>Array.from({length:count},()=>({id:id++,type})));
  return {level,config,items,tray:[],collected:Array(ITEMS.length).fill(0),goals:config.goals.map(g=>({...g})),status:'ready',remaining:config.seconds,frozen:0,uses:{...config.boosters},last:null};
@@ -19,7 +21,7 @@ export function pick(s,id){
  const [item]=s.items.splice(i,1);s.tray.push(item);s.last=item;
  const matches=s.tray.filter(x=>x.type===item.type);let matched=false;
  if(matches.length===3){s.tray=s.tray.filter(x=>x.type!==item.type);s.collected[item.type]+=3;s.last=null;matched=true;}
- if(s.goals.every(g=>s.collected[g.type]>=g.count))s.status='won';
+ if(complete(s))s.status='won';
  else if(s.tray.length>=s.config.capacity)s.status='lost';
  return {item,matched};
 }
@@ -30,9 +32,15 @@ export function vacuum(s){
  if(s.status!=='playing'||s.uses.hint<=0)return null;
  const openGoals=s.goals.filter(goal=>s.collected[goal.type]<goal.count);
  const goal=openGoals.find(({type})=>remainingGoal(s,type)>=3)??openGoals[0];
- if(!goal)return null;
+ if(!goal&&!s.config.layout?.parcels)return null;
 
- const result=collectTriple(s,goal.type);
+ const targets=new Set([goal?.type,...openGoals.map(g=>g.type),...closedParcels(s).map(p=>p.type)]);
+ let result=null;
+ for(const type of targets){
+  if(type===undefined)continue;
+  result=collectTriple(s,type);
+  if(result||!s.config.layout?.parcels)break;
+ }
  if(result)s.uses.hint--;
  return result;
 }
@@ -46,7 +54,8 @@ export function clearStarStack(s,id){
 }
 function collectTriple(s,type,preferredId){
  const fromTray=s.tray.filter(item=>item.type===type);
- const candidates=s.items.filter(item=>item.type===type);
+ const sealed=s.config.layout?.parcels?sealedIds(s):null;
+ const candidates=s.items.filter(item=>item.type===type&&!sealed?.has(item.id));
  if(preferredId!==undefined)candidates.sort((a,b)=>Number(b.id===preferredId)-Number(a.id===preferredId));
  const fromBoard=candidates.slice(0,3-fromTray.length);
  if(fromBoard.length+fromTray.length!==3)return null;
@@ -56,6 +65,6 @@ function collectTriple(s,type,preferredId){
  s.tray=s.tray.filter(item=>item.type!==type);
  if(s.last?.type===type)s.last=null;
  s.collected[type]+=3;
- if(s.goals.every(g=>s.collected[g.type]>=g.count))s.status='won';
+ if(complete(s))s.status='won';
  return {type,fromBoard};
 }

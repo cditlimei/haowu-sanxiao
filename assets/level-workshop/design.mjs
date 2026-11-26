@@ -1,3 +1,4 @@
+import {withParcelPlan} from '../parcel-orders.mjs';
 import {curveOffset} from './curve-offsets.mjs?rev=opening25';
 import {LEVELS} from '../../data/levels.mjs?rev=opening25';
 import {challengeDeals} from './challenge-deals.mjs';
@@ -470,7 +471,12 @@ export const transitionOffsets={1000:108,1003:12,2000:48,2001:12,2002:64,2003:26
 export function hasTwoGoalOpening(config){
  return config.id===15013&&config.variant===6;
 }
-export function design(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false,useCurve=true,useTwoGoalOpening=true){
+export function design(config,...options){
+ const plan=baseDesign(config,...options);
+ // Runtime selects gates by the exact versioned seed, the editor opens the current deal.
+ return options.length?plan:withParcelPlan(config,plan);
+}
+function baseDesign(config,tuned=true,useSample=true,useCadence=true,useOpening=true,useLate=true,originalTransition=false,useCurve=true,useTwoGoalOpening=true){
  const prior=previousDeal(config,tuned,useSample,useCadence,useOpening,useLate,originalTransition);
  if(useCurve&&useTwoGoalOpening&&hasTwoGoalOpening(config)){
   const deal=openingDeal(prior,config,162,true);
@@ -535,23 +541,30 @@ function standardDesign(config,tuned){
   pace:recovery?'缓冲':challenge?'挑战':['入门','熟悉','拆堆','交错','策略','进阶'][tier]};
 }
 export function createPlay(d){return {piles:d.piles.map(s=>[...s]),tray:[],sets:0,collected:{},used:false,status:'playing'};}
+function sealedCount(p,d,i){
+ const parcel=d.parcels?.find(order=>order.lane===i&&(p.collected[order.type]??0)<3);
+ return parcel?.protectedCount??0;
+}
+export function playableHeads(p,d){
+ return p.piles.map((pile,i)=>pile.length>sealedCount(p,d,i)?pile.at(-1):undefined);
+}
 export function move(p,d,i,star=false){
- if(p.status!=='playing'||!p.piles[i]?.length)return false;
+ if(p.status!=='playing'||!p.piles[i]?.length||p.piles[i].length<=sealedCount(p,d,i))return false;
  const t=p.piles[i].at(-1);
  if(star){
   if(!d.starAfter||p.used||p.sets<d.starAfter)return false;
   let count=p.tray.filter(v=>v===t).length;
-  if(count+p.piles.reduce((n,s)=>n+s.filter(v=>v===t).length,0)<3)return false;
+  if(count+p.piles.reduce((n,s,i)=>n+s.slice(sealedCount(p,d,i)).filter(v=>v===t).length,0)<3)return false;
   p.tray=p.tray.filter(v=>v!==t);
   p.piles[i].pop();count++;
-  for(const s of p.piles)for(let j=s.length-1;j>=0&&count<3;j--)if(s[j]===t){s.splice(j,1);count++;}
+  for(const [lane,s] of p.piles.entries())for(let j=s.length-1;j>=sealedCount(p,d,lane)&&count<3;j--)if(s[j]===t){s.splice(j,1);count++;}
   p.used=true;p.sets++;p.collected[t]=(p.collected[t]??0)+3;
  }else{
   p.tray.push(p.piles[i].pop());
   if(p.tray.filter(x=>x===t).length===3){p.tray=p.tray.filter(x=>x!==t);p.sets++;p.collected[t]=(p.collected[t]??0)+3;}
  }
- if(p.tray.length>=d.capacity)p.status='lost';
- else if(d.goals?.length?d.goals.every(g=>(p.collected[g.type]??0)>=g.count):!p.tray.length&&p.piles.every(s=>!s.length))p.status='won';
+ if(p.tray.length>=d.capacity||d.parcels&&!playableHeads(p,d).some(t=>t!==undefined)&&d.parcels.some(q=>(p.collected[q.type]??0)<3))p.status='lost';
+ else if(d.goals?.length?d.goals.every(g=>(p.collected[g.type]??0)>=g.count)&&!d.parcels?.some(q=>(p.collected[q.type]??0)<3):!p.tray.length&&p.piles.every(s=>!s.length))p.status='won';
  return true;
 }
 export function certify(d){
@@ -567,7 +580,7 @@ export function solve(d){
   if(p.status==='won')return true;
   if(p.status==='lost'||seen.size>=80000)return false;
   const key=p.piles.map(a=>a.length).join(',');if(seen.has(key))return false;seen.add(key);
-  const choices=p.piles.map((s,i)=>({i,t:s.at(-1)})).filter(x=>x.t!==undefined);
+  const choices=playableHeads(p,d).map((t,i)=>({i,t})).filter(x=>x.t!==undefined);
   const score=t=>p.tray.filter(v=>v===t).length*10+choices.filter(c=>c.t===t).length;
   for(const {i} of choices.sort((a,b)=>score(b.t)-score(a.t))){
    const q={...p,collected:{...p.collected},piles:p.piles.map(s=>[...s]),tray:[...p.tray]};move(q,d,i);path.push(i);

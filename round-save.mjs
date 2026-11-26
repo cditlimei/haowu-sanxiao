@@ -107,7 +107,7 @@ export function restoreRound(saved,level,variant,makeState=createState){
  }
  if(saved?.version!==1||saved.level!==level||saved.variant!==config.variant||saved.seed!==config.seed)return null;
  if(config.layout?.parcels&&!saved.parcelEdition){
-  const {parcels,...layout}=config.layout;
+  const {parcels,parcelMode,...layout}=config.layout;
   state.config={...config,layout};
  }
  if(JSON.stringify(saved.goals)!==JSON.stringify(state.goals)){

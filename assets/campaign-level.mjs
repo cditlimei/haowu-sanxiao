@@ -3,7 +3,7 @@ import {getLevel} from '../data/levels.mjs?rev=opening25';
 import {createState} from '../rules.mjs?rev=parcel26';
 import {design,hasTwoGoalOpening,hasChallengeDeal,hasSampleStacks,usesCadence,usesOpeningChallenge,usesLateChallenge,transitionOffsets,strategyOffsets} from './level-workshop/design.mjs?rev=opening25';
 
-import {parcelLayout} from './parcel-orders.mjs';
+import {parcelLayout} from './parcel-orders.mjs?rev=parcel-chapters1';
 
 const compiled=new WeakMap();
 export function campaignConfig(level,variant,savedSeed){

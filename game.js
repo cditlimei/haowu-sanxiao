@@ -1,4 +1,4 @@
-import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=parcel26';
+import {campaignConfig,createCampaignState} from './assets/campaign-level.mjs?rev=parcel-chapters1';
 import {parcelView} from './assets/parcel-view.mjs';
 import {availableHeads} from './assets/stack-order.mjs?rev=parcel26';
 import {variantLooks,variantAppearances} from './assets/real-surfaces/variant-looks.mjs';
@@ -1263,7 +1263,7 @@ function showLevelTip(){
  const orders=state.config.layout?.parcels;
  if(orders){
   const names=orders.map(p=>boardItemName(p.type));
-  const tip=names.length===1?'收齐三个'+names[0]+'，拆开图签包裹':state.level===15012?names.join('、')+'各拆一包，先后由你选':'先收'+names[0]+'，再收'+names[1]+'拆第二包';
+  const tip=names.length===1?'收齐三个'+names[0]+'，拆开图签包裹':state.config.layout.parcelMode==='choice'?names.join('、')+'各拆一包，先后由你选':'先收'+names[0]+'，再收'+names[1]+'拆第二包';
   toast(tip);return;
  }
  const tip=openingTips.get(state.level);

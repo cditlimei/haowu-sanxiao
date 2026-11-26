@@ -1,4 +1,4 @@
-import {withParcelPlan} from '../parcel-orders.mjs';
+import {withParcelPlan} from '../parcel-orders.mjs?rev=parcel-chapters1';
 import {curveOffset} from './curve-offsets.mjs?rev=opening25';
 import {LEVELS} from '../../data/levels.mjs?rev=opening25';
 import {challengeDeals} from './challenge-deals.mjs';

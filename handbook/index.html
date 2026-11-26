@@ -2,18 +2,26 @@
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f6f4eb;color:#263930;font:16px/1.5 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}main{max-width:940px;padding:28px 16px 64px;margin:auto}header{border-bottom:3px solid #234f44;margin-bottom:20px;padding-bottom:18px}header p{margin:0 0 4px;color:#386458;font-weight:650}h1{font-size:clamp(26px,5vw,38px);margin:0;letter-spacing:-.04em}form,nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}form{margin-top:16px}button,input,select,.play{font:inherit;border-radius:9px;border:1px solid #b1bbb1;padding:8px 12px;min-height:44px;background:#fffdf8;color:#243b31}form input{width:8em;max-width:35vw}button,.play,summary{cursor:pointer}button:disabled{opacity:.4;cursor:default}.primary,.play{color:white;background:#225447;border-color:#225447;text-decoration:none;font-weight:650}.play{display:inline-flex;align-items:center}article{background:#fffef9;border:1px solid #d9ded4;border-radius:16px;padding:clamp(14px,3vw,28px)}h2{margin:.2em 0 .45em;font-size:clamp(24px,5vw,32px);line-height:1.25}h3{font-size:17px;margin:19px 0 6px}.eyebrow{font-weight:700;color:#467165}.stats,.items{display:flex;flex-wrap:wrap;gap:6px}.stats span,.items span{display:inline-block;border-radius:6px;padding:4px 9px;background:#eef2e8}.items b{color:#275845;font-variant-numeric:tabular-nums}.goals span{background:#fff0c9}figure{margin:0}figure img{display:block;width:100%;max-width:310px;margin:auto;height:auto;border-radius:12px}.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,30%);gap:24px;margin-top:16px}figcaption{font-size:14px;color:#546359;text-align:center;margin:5px 0}.subtle{color:#546359}details{border-top:1px solid #dbe2d6;margin-top:12px;padding-top:10px}summary{font-weight:650;min-height:40px;padding:6px 0}li{margin:6px 0}nav{margin:16px 0 0}#status:empty{display:none}#status{padding:8px 0;color:#694524}#variant{max-width:100%}p{margin:.5em 0}.route{overflow-wrap:anywhere}:focus-visible{outline:3px solid #197d70;outline-offset:2px}@media(max-width:650px){main{padding:16px 12px 40px}.layout{grid-template-columns:1fr;gap:16px}figure{border-top:1px solid #e1e5db;padding-top:12px}figure img{max-width:min(100%,340px)}}
 .curve{border-collapse:collapse;width:100%;font-size:clamp(12px,3.5vw,15px);text-align:left}.curve th,.curve td{padding:6px 3px;border-bottom:1px solid #dbe2d6}.curve .current{background:#eef2e8;font-weight:650}</style></head><body><main><header><p>好物三消</p><h1>逐关设计手册</h1>
-<form id="lookup"><label for="key">关号</label><input id="key" inputmode="numeric" pattern="[0-9]+" type="text" required maxlength="5" placeholder="1–17899" enterkeyhint="search"><button class="primary">查关</button></form></header>
+<form id="lookup"><label for="key">关号</label><input id="key" inputmode="numeric" pattern="[0-9]+" type="text" required maxlength="5" placeholder="1–17899" enterkeyhint="search"><button class="primary">查关</button></form><details><summary>按拆包玩法找关</summary><label for="parcel-level">拆包关卡</label> <select id="parcel-level"><option value="">选择关号</option></select></details></header>
 <p role="status" id="status"></p><article id="card" hidden></article></main>
 <script>
 'use strict';
-const max=17899,blockSize=20,version='a09f0c96992d-967398cfca',rev='a09f0c96992d';
+const max=17899,blockSize=20,version='a09f0c96992d-74d3809ccb',rev='a09f0c96992d';
 const game='https://cditlimei.github.io/haowu-sanxiao/',card=document.querySelector('#card'),key=document.querySelector('#key'),statusNode=document.querySelector('#status');
+const parcelLevels={"single":[12,15011],"sequence":[14,62,310,562,569,810,1062,1312,1560,1809,2062,2307,2562,2810,3062,3312,3558,3812,4062,4311,4560,4810,5060,5310,5560,5811,6061,6314,6564,6811,7064,7311,7564,7811,8061,8311,8561,8841,9061,9311,9561,9811,10067,10311,10561,10811,11061,11311,11561,11811,12061,12314,12561,12811,13061,13307,13561,13813,14061,14311,14561,14812,15062,15312,15562,15812,16059,16339,16562,16812,17062,17312,17562,17787],"choice":[182,434,682,934,1182,1432,1681,1932,2184,2431,2683,2932,3182,3432,3682,3932,4181,4434,4684,4934,5184,5434,5685,5934,6184,6431,6684,6934,7184,7434,7681,7934,8184,8434,8681,8847,9184,9434,9684,9931,10184,10431,10684,10934,11184,11434,11684,11934,12181,12431,12681,12937,13184,13434,13682,13933,14184,14434,14682,14932,15012,15182,15432,15682,15932,16182,16346,16682,16936,17182,17436,17684,17858]},parcelSelect=document.querySelector('#parcel-level');
+for(const [mode,label] of [['sequence','顺序拆包'],['choice','自由选包'],['single','单包入门']]){
+ const group=document.createElement('optgroup');group.label=label;
+ for(const id of parcelLevels[mode]??[])group.append(new Option('第 '+id+' 关',id));
+ parcelSelect.append(group);
+}
+parcelSelect.onchange=()=>{if(parcelSelect.value)gotoLevel(Number(parcelSelect.value))};
 const cache=new Map();let sequence=0;
 function node(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n}
 function button(text,action){const b=node('button',text);b.type='button';b.onclick=action;return b}
 function section(target,title,content){target.append(node('h3',title),content)}
 function gotoLevel(id,v){const u=new URL(location.href);u.searchParams.set('level',id);if(v===undefined)u.searchParams.delete('variant');else u.searchParams.set('variant',v);if(u.href!==location.href)history.pushState(null,'',u);load()}
 function render(id,record,group){
+ parcelSelect.value=record.main&&record.parcelMode?String(id):'';
  const r=record,name=i=>r.visual[i]??group.names[i],top=node('div','第 '+id+' 关');top.className='eyebrow';
  card.replaceChildren(top,node('h2',r.title));const nav=node('nav');
  const prev=button('上一关',()=>gotoLevel(id-1)),next=button('下一关',()=>gotoLevel(id+1));prev.disabled=id<=1;next.disabled=id>=max;
@@ -46,6 +54,7 @@ function render(id,record,group){
  const tools=[['hint','吸尘器',3],['undo','撤回',5],['shuffle','重排',7],['freeze','冰冻',9]].map(([k,n,l])=>n+' '+(id<l?'未解锁':(r.boost[k]??0)+' 次'));if(r.boost.star)tools.push('连消星 '+r.boost.star+' 次，先消 '+r.star+' 组');detail.append(node('p',tools.join(' · ')),node('p','种子 '+r.seed));more('难度指标与道具',detail);
  if(r.piles.length){const ol=node('ol');for(const p of r.piles)ol.append(node('li',p.map(name).join(' → ')));more('逐堆物件（从底到顶）',ol)}
  const route=node('p',r.route.join(' → '));route.className='route';more(r.piles.length?'无道具解（堆号）':'无道具解（实例编号）',route);
+ if(r.alternateRoute){const alt=node('p',r.alternateRoute.join(' → '));alt.className='route';more('先开另一包的无道具解（堆号）',alt)}
  card.hidden=false;document.title='第 '+id+' 关 · 好物三消逐关手册';
 }
 async function load(){
